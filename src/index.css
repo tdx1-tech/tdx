@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Plus Jakarta Sans", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-emerald: #0D9C89;       /* Vibrant Teal (#0D9C89) */
+  --color-brand-emerald-dark: #0A7B6C;  /* Darker Teal */
+  --color-brand-mint: #0D9C89;         /* Accent Teal (#0D9C89) */
+  --color-brand-mint-light: #F0FDFa;   /* Fresh Ice Teal Tint */
+  --color-brand-champagne: #E5E7EB;    /* Clean Neutral Gray Border */
+  --color-brand-sand: #FFFFFF;         /* Pure Clean White (#FFFFFF) */
+  --color-brand-gold: #0D9C89;         /* Accent Teal (#0D9C89) */
+  --color-brand-gold-dark: #0A7B6C;    /* Darker Accent Teal */
+  --color-brand-charcoal: #0D0C1D;     /* Deep Black/Charcoal Text (#0D0C1D) */
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+}
+
+/* Custom CSS utilities for premium UI effects */
+@layer utilities {
+  .clip-diagonal {
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+  .bg-radial-gradient {
+    background: radial-gradient(circle at center, rgba(109, 40, 217, 0.08) 0%, transparent 70%);
+  }
+}
+
+/* Smooth active focus ring styling */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-brand-mint);
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+}
+
+/* Custom scrollbar for premium touch */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-brand-sand);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-emerald);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-emerald-dark);
+}
+
+/* Global brand font assignments to override default fallbacks */
+body, button, input, select, textarea, .font-sans {
+  font-family: var(--font-sans) !important;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif, .font-display {
+  font-family: var(--font-serif) !important;
+}
+
