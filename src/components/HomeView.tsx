@@ -727,41 +727,29 @@ export default function HomeView({ onOpenBooking, setActiveTab }: HomeViewProps)
           </motion.div>
 
           {/* Interactive Drag Comparison Canvas */}
-          {/* Sliders Grid: 2 Columns matching user screenshot */}
+          {/* Sliders Grid: 2 Columns - Display Specific Case Studies */}
           <div className="grid md:grid-cols-2 gap-10">
-            {/* Case Card 1: Crown Restoration / Ceramic Restoration */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: 0.05 }}
-              whileHover={{ y: -3 }}
-            >
-              <HomeCaseSliderCard
-                title="Crown Restoration"
-                desc="Natural-looking ceramic crown replacing a cracked molar."
-                beforeImg="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=80&w=800"
-                afterImg="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800"
-                doctorNote="Dr. Faizan Ul Hassan"
-              />
-            </motion.div>
-
-            {/* Case Card 2: Smile Whitening */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              whileHover={{ y: -3 }}
-            >
-              <HomeCaseSliderCard
-                title="Smile Whitening"
-                desc="Professional in-office whitening, visibly brighter in a single visit."
-                beforeImg="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800"
-                afterImg="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=800"
-                doctorNote="Dr. Mashal Zeb Jan"
-              />
-            </motion.div>
+            {CASE_STUDIES.filter((cs) => cs.id === 'case-diastema-mashal' || cs.id === 'case-whitening-mashal-1').map((caseStudy, idx) => {
+              const doctor = DOCTORS.find((d) => d.id === caseStudy.doctor);
+              return (
+                <motion.div
+                  key={caseStudy.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  whileHover={{ y: -3 }}
+                >
+                  <HomeCaseSliderCard
+                    title={caseStudy.title.split(': ')[1] || caseStudy.title}
+                    desc={caseStudy.description}
+                    beforeImg={caseStudy.beforeImage}
+                    afterImg={caseStudy.afterImage}
+                    doctorNote={doctor?.name || 'Dr. TDX'}
+                  />
+                </motion.div>
+              );
+            })}
           </div>
 
         </div>
