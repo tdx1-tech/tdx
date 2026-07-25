@@ -5,6 +5,7 @@
 
 import { Doctor, Service, CaseStudy, GoogleReview, FAQItem } from './types';
 
+
 // Case study images - Dr. Mashal
 import diastemaClosure from '@/assets/images/Cases/dr-mashal-cases/diastema-closure.jpeg';
 import toothRestoration from '@/assets/images/Cases/dr-mashal-cases/tooth-restoration.jpeg';
@@ -24,9 +25,20 @@ import estheticCrownLengtheningAfter from '@/assets/images/Cases/dr-faizan-cases
 import drMashal from '@/assets/images/dr-mashal.webp';
 import faizan from '@/assets/images/faizan.webp';
 
+// Extra doctor photos for the per-doctor profile pages.
+// Only real photographs of the two doctors belong here - the stock
+// doctor_*.jpg files in assets/images are generic scaffolding imagery.
+import mashalMirrorSelfie from '@/assets/images/Gallery/dr-mashal-mirror-selfie.jpg';
+import mashalTraining from '@/assets/images/Gallery/dr-mashal-conf.jpg';
+import mashalPediatric from '@/assets/images/Gallery/dr-mashal-treating-kids.jpeg';
+import mashalCourses from '@/assets/images/Gallery/dr-mashal-courses.jpg';
+import faizanInClinic from '@/assets/images/Gallery/dr-faizan-in-clinic.jpeg';
+import faizanAbroad from '@/assets/images/Gallery/dr-faizan-in-scotland.webp';
+
 export const DOCTORS: Doctor[] = [
   {
     id: 'mashal',
+    slug: 'dr-mashal-zeb-jan',
     name: 'Dr. Mashal Zeb Jan',
     fullName: 'Dr. Mashal Zeb Jan',
     title: "Pakistan's Youngest FCPS Specialist in Operative Dentistry & Endodontics",
@@ -47,11 +59,70 @@ export const DOCTORS: Doctor[] = [
     ],
     languages: ['English', 'Pashto', 'Urdu'],
     image: drMashal,
+    photos: [
+      {
+        src: drMashal,
+        alt: 'Dr. Mashal Zeb Jan in convocation robes holding her College of Physicians and Surgeons Pakistan scroll',
+        caption: 'FCPS convocation - College of Physicians and Surgeons Pakistan'
+      },
+      {
+        src: mashalMirrorSelfie,
+        alt: 'Dr. Mashal Zeb Jan',
+        caption: 'Outside the clinic'
+      },
+      {
+        src: mashalTraining,
+        alt: 'Dr. Mashal Zeb Jan at an international hands-on cosmetic dentistry course',
+        caption: 'Hands-on training abroad with international faculty'
+      },
+      {
+        src: mashalPediatric,
+        alt: 'Dr. Mashal Zeb Jan speaking with a young patient during a consultation',
+        caption: 'Chairside with a young patient - unhurried, child-friendly care'
+      }
+    ],
+    // Continuing education. The first two entries restate certifications the
+    // clinic already publishes (see `certs` above). The third is inferred from
+    // the training photograph and needs the doctor to confirm the real course
+    // name, faculty and year - or to be removed. Extend with her full CPD record.
+    courses: [
+      {
+        title: 'Digital Smile Design (DSD)',
+        provider: 'Digital Smile Design Academy',
+        role: 'Certified Designer',
+        description:
+          'Photography-led, facially driven smile planning - the workflow behind every veneer and smile makeover case at the clinic.'
+      },
+      {
+        title: 'Advanced Micro-Endodontics',
+        provider: 'Advanced Endodontic Training Programme',
+        role: 'Certified',
+        description:
+          'Magnification-assisted root canal therapy: canal location, negotiation of calcified anatomy and microscope-guided retreatment.'
+      },
+      {
+        title: 'Hands-On Aesthetic & Composite Dentistry',
+        provider: 'International visiting faculty',
+        location: 'United Kingdom',
+        role: 'Attended',
+        description:
+          'Live hands-on programme in layered anterior composites and contemporary aesthetic restorative protocols.'
+      }
+    ],
+    coursePhotos: [
+      {
+        src: mashalCourses,
+        alt: 'Dr. Mashal Zeb Jan with fellow practitioners at a hands-on dentistry course',
+        caption: 'Hands-on training course'
+      }
+    ],
+    instagramUrl: 'https://www.instagram.com/drmashalzebjan/',
     whatsappNumber: '+923165944327',
     phoneNumber: '+923165944327'
   },
   {
     id: 'faizan',
+    slug: 'dr-faizan-ul-hassan',
     name: 'Dr. Faizan Ul Hassan',
     fullName: 'Dr. Faizan Ul Hassan',
     title: 'Consultant Orthodontist & Department Lead',
@@ -73,6 +144,65 @@ export const DOCTORS: Doctor[] = [
     ],
     languages: ['English', 'Urdu', 'Pashto', 'Punjabi'],
     image: faizan,
+    photos: [
+      {
+        src: faizan,
+        alt: 'Portrait of Dr. Faizan Ul Hassan',
+        caption: 'Consultant Orthodontist & Department Lead'
+      },
+      {
+        src: faizanInClinic,
+        alt: 'Dr. Faizan Ul Hassan standing in the reception area of The Dental Experience',
+        caption: 'At the clinic in Shaheen Town, Peshawar'
+      },
+      {
+        src: faizanAbroad,
+        alt: 'Dr. Faizan Ul Hassan on a street in Edinburgh, Scotland',
+        caption: 'Professional development travel - Edinburgh, Scotland'
+      }
+    ],
+    // Workshops below are the ones already documented in Dr. Faizan's biography
+    // (four as Principal Facilitator, two as Associate Facilitator).
+    courses: [
+      {
+        title: 'National Postgraduate Orthodontic Workshop',
+        provider: 'College of Physicians and Surgeons Pakistan (CPSP)',
+        role: 'Principal Facilitator - 4 workshops',
+        description:
+          'Designed and led four national workshops training postgraduate orthodontic residents from across Pakistan.'
+      },
+      {
+        title: 'National Postgraduate Orthodontic Workshop',
+        provider: 'College of Physicians and Surgeons Pakistan (CPSP)',
+        role: 'Associate Facilitator - 2 workshops',
+        description:
+          'Supporting faculty on two further national residency training workshops.'
+      },
+      {
+        title: 'Lingual Orthodontics',
+        provider: 'Certified programme',
+        role: 'Certified',
+        description:
+          'Indirect bonding and biomechanics for brackets placed on the inner tooth surfaces - the basis of the clinic\'s invisible braces stream.'
+      },
+      {
+        title: 'Health Professions Education',
+        provider: 'Certified programme',
+        role: 'Certified',
+        description:
+          'Formal teaching qualification underpinning his final-year orthodontics teaching and workshop facilitation.'
+      }
+    ],
+    // Only one training photo is on file for Dr. Faizan - add workshop
+    // photography here as the clinic supplies it.
+    coursePhotos: [
+      {
+        src: faizanAbroad,
+        alt: 'Dr. Faizan Ul Hassan during professional development travel in Edinburgh, Scotland',
+        caption: 'Professional development, Edinburgh'
+      }
+    ],
+    instagramUrl: 'https://www.instagram.com/faizanulhassan/',
     whatsappNumber: '+923439591498',
     phoneNumber: '+923165944327'
   }

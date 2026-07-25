@@ -3,32 +3,45 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
 import HomeView from './components/HomeView';
 import AboutView from './components/AboutView';
+import DoctorProfileView from './components/DoctorProfileView';
 import ServicesView from './components/ServicesView';
 import CaseStudiesView from './components/CaseStudiesView';
 import ContactView from './components/ContactView';
 import BookingWizard from './components/BookingWizard';
 import Footer from './components/Footer';
 import FloatingAssistWidget from './components/FloatingAssistWidget';
-import { MessageSquare, Phone, MapPin, Check, Instagram, Globe } from 'lucide-react';
+import { DOCTORS } from './data';
+import { DoctorType } from './types';
+
+/** Hash prefix for the per-doctor pages, e.g. #/doctors/dr-mashal-zeb-jan */
+const DOCTOR_HASH_PREFIX = '#/doctors/';
+
+/** Reads the doctor slug out of the current URL hash, if there is one. */
+function doctorIdFromHash(): DoctorType | null {
+  if (!window.location.hash.startsWith(DOCTOR_HASH_PREFIX)) return null;
+  const slug = window.location.hash.slice(DOCTOR_HASH_PREFIX.length);
+  return DOCTORS.find((d) => d.slug === slug)?.id ?? null;
+}
 
 export default function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [activeTab, setActiveTab] = useState<string>('home');
   const [isBookingOpen, setIsBookingOpen] = useState<boolean>(false);
   const [preSelectedDoc, setPreSelectedDoc] = useState<'mashal' | 'faizan' | null>(null);
   const [preSelectedSrv, setPreSelectedSrv] = useState<string | null>(null);
   const [recentAppointmentsCount, setRecentAppointmentsCount] = useState<number>(0);
 
-  // Deep-link request for a specific doctor's profile on the About page. The nonce
-  // lets AboutView re-run its scroll even when the same doctor is requested twice.
-  const [doctorFocus, setDoctorFocus] = useState<{ id: 'mashal' | 'faizan'; nonce: number } | null>(null);
-  const skipNextScrollTop = useRef<boolean>(false);
+  // The doctor whose own page is being shown. Seeded from the URL so a shared
+  // link like /#/doctors/dr-faizan-ul-hassan opens straight onto that profile.
+  const [activeDoctorId, setActiveDoctorId] = useState<DoctorType | null>(doctorIdFromHash);
+  const [activeTab, setActiveTab] = useState<string>(() =>
+    doctorIdFromHash() ? 'doctor' : 'home'
+  );
 
   // Load appointments count from localStorage on mount and updates
   const loadAppointmentsCount = () => {
@@ -58,29 +71,58 @@ export default function App() {
     setIsBookingOpen(true);
   };
 
-  // Scroll to top upon page navigation, unless we're deep-linking straight to a
-  // doctor profile - in that case AboutView scrolls to the requested doctor instead.
+  // Scroll to top upon page navigation. Also fires when switching between the
+  // two doctor pages, since activeDoctorId changes with it.
   useEffect(() => {
-    if (skipNextScrollTop.current) {
-      skipNextScrollTop.current = false;
-      return;
-    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [activeTab]);
+  }, [activeTab, activeDoctorId]);
 
-  // Ordinary tab navigation. Clears any pending doctor deep-link so that returning
-  // to About via the navbar lands at the top instead of the last doctor clicked.
+  // Keep the URL hash in step with the doctor pages so profiles stay shareable
+  // and the browser back button behaves the way visitors expect.
+  useEffect(() => {
+    const targetHash =
+      activeTab === 'doctor' && activeDoctorId
+        ? DOCTOR_HASH_PREFIX + DOCTORS.find((d) => d.id === activeDoctorId)!.slug
+        : '';
+
+    if (window.location.hash === targetHash) return;
+
+    if (targetHash) {
+      window.history.pushState(null, '', targetHash);
+    } else {
+      // Drop the hash without leaving a bare "#" behind in the address bar
+      window.history.pushState(null, '', window.location.pathname + window.location.search);
+    }
+  }, [activeTab, activeDoctorId]);
+
+  // Browser back / forward between a doctor page and the rest of the site
+  useEffect(() => {
+    const syncFromHash = () => {
+      const id = doctorIdFromHash();
+      if (id) {
+        setActiveDoctorId(id);
+        setActiveTab('doctor');
+      } else {
+        setActiveTab((tab) => (tab === 'doctor' ? 'about' : tab));
+      }
+    };
+
+    window.addEventListener('popstate', syncFromHash);
+    return () => window.removeEventListener('popstate', syncFromHash);
+  }, []);
+
+  // Ordinary tab navigation
   const navigateToTab = (tab: string) => {
-    setDoctorFocus(null);
     setActiveTab(tab);
   };
 
-  // Jump to a specific doctor's full profile on the About page
+  // Open a doctor's own page
   const handleViewDoctorProfile = (doctorId: 'mashal' | 'faizan') => {
-    skipNextScrollTop.current = true;
-    setDoctorFocus((prev) => ({ id: doctorId, nonce: (prev?.nonce ?? 0) + 1 }));
-    setActiveTab('about');
+    setActiveDoctorId(doctorId);
+    setActiveTab('doctor');
   };
+
+  const activeDoctor = DOCTORS.find((d) => d.id === activeDoctorId) ?? DOCTORS[0];
 
   return (
     <div className="min-h-screen bg-brand-sand text-brand-charcoal flex flex-col font-sans antialiased selection:bg-brand-emerald selection:text-white">
@@ -91,18 +133,21 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* Premium Navigation Header */}
+      {/* Premium Navigation Header. A doctor page keeps "Our Specialists" lit,
+          since that is the section it belongs to. */}
       <Navbar
-        activeTab={activeTab}
+        activeTab={activeTab === 'doctor' ? 'about' : activeTab}
         setActiveTab={navigateToTab}
         onOpenBooking={(docId) => handleOpenBooking(docId)}
+        onViewDoctorProfile={handleViewDoctorProfile}
+        activeDoctorId={activeTab === 'doctor' ? activeDoctorId : null}
       />
 
       {/* Main Content Area with Smooth Page/Section Cross-fade */}
       <main className={`flex-1 ${activeTab !== 'home' ? 'pt-20 sm:pt-24' : ''}`}>
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeTab}
+            key={activeTab === 'doctor' ? `doctor-${activeDoctorId}` : activeTab}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
@@ -118,7 +163,16 @@ export default function App() {
             {activeTab === 'about' && (
               <AboutView
                 onOpenBooking={(docId) => handleOpenBooking(docId)}
-                focusDoctor={doctorFocus}
+                onViewDoctorProfile={handleViewDoctorProfile}
+              />
+            )}
+            {activeTab === 'doctor' && (
+              <DoctorProfileView
+                doctor={activeDoctor}
+                onOpenBooking={(docId, srvId) => handleOpenBooking(docId, srvId ?? null)}
+                onBack={() => navigateToTab('about')}
+                onViewDoctorProfile={handleViewDoctorProfile}
+                setActiveTab={navigateToTab}
               />
             )}
             {activeTab === 'services' && (
@@ -127,11 +181,7 @@ export default function App() {
                 preSelectedDoctorId={preSelectedDoc}
               />
             )}
-            {activeTab === 'cases' && (
-              <CaseStudiesView 
-                onOpenBooking={(docId) => handleOpenBooking(docId)} 
-              />
-            )}
+            {activeTab === 'cases' && <CaseStudiesView />}
             {activeTab === 'contact' && (
               <ContactView 
                 onOpenBooking={(docId) => handleOpenBooking(docId)} 

@@ -3,39 +3,17 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Award, BookOpen, GraduationCap, Globe, ShieldAlert, CheckCircle, Phone, MessageCircle, MessageSquare } from 'lucide-react';
+import { Award, BookOpen, GraduationCap, CheckCircle, ArrowRight } from 'lucide-react';
 import { DOCTORS } from '../data';
 
 interface AboutViewProps {
   onOpenBooking: (doctorId: 'mashal' | 'faizan') => void;
-  /** Deep-link request from elsewhere in the app to open a specific doctor's profile. */
-  focusDoctor?: { id: 'mashal' | 'faizan'; nonce: number } | null;
+  /** Opens the doctor's own page, which carries their full profile. */
+  onViewDoctorProfile: (doctorId: 'mashal' | 'faizan') => void;
 }
 
-export default function AboutView({ onOpenBooking, focusDoctor }: AboutViewProps) {
-  // Briefly ring the profile we jumped to so it's obvious which one was requested
-  const [highlightedId, setHighlightedId] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!focusDoctor) return;
-
-    // Wait a frame so the page cross-fade has laid out before we measure/scroll
-    const raf = requestAnimationFrame(() => {
-      document
-        .getElementById(`doctor-${focusDoctor.id}`)
-        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    setHighlightedId(focusDoctor.id);
-    const timer = setTimeout(() => setHighlightedId(null), 2200);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      clearTimeout(timer);
-    };
-  }, [focusDoctor?.id, focusDoctor?.nonce]);
-
+export default function AboutView({ onOpenBooking, onViewDoctorProfile }: AboutViewProps) {
   return (
     <div className="space-y-24 py-12 pb-24">
       {/* Introduction Header */}
@@ -68,21 +46,20 @@ export default function AboutView({ onOpenBooking, focusDoctor }: AboutViewProps
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              /* scroll-mt clears the fixed navbar when deep-linked from another page */
-              className={`flex flex-col lg:flex-row gap-12 items-center scroll-mt-24 sm:scroll-mt-28 rounded-3xl transition-shadow duration-500 ${
+              /* scroll-mt clears the fixed navbar when linked to from another page */
+              className={`flex flex-col lg:flex-row gap-12 items-center scroll-mt-24 sm:scroll-mt-28 rounded-3xl ${
                 isEven ? '' : 'lg:flex-row-reverse'
-              } ${
-                highlightedId === doc.id
-                  ? 'ring-2 ring-brand-gold/70 ring-offset-8 ring-offset-brand-sand'
-                  : 'ring-0'
               }`}
             >
-              {/* Profile Image Column */}
+              {/* Profile Image Column - doubles as a link to the doctor's own page */}
               <div className="w-full lg:w-[40%] relative">
-                <motion.div 
+                <motion.button
+                  type="button"
                   whileHover={{ scale: 1.015 }}
                   transition={{ duration: 0.3 }}
-                  className="relative z-10 rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-brand-sand aspect-[3/4]"
+                  onClick={() => onViewDoctorProfile(doc.id)}
+                  aria-label={`Open ${doc.name}'s profile page`}
+                  className="relative z-10 block w-full rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-brand-sand aspect-[3/4] cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0D9C89] focus-visible:ring-offset-2"
                 >
                   <img
                     src={doc.image}
@@ -92,9 +69,15 @@ export default function AboutView({ onOpenBooking, focusDoctor }: AboutViewProps
                     referrerPolicy="no-referrer"
                   />
                   {/* Backdrop tint */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-brand-charcoal/10 to-transparent flex flex-col justify-end p-6 text-white" />
-                </motion.div>
-                
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-brand-charcoal/10 to-transparent" />
+
+                  {/* Hover affordance so it reads as clickable */}
+                  <span className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 bg-brand-charcoal/75 backdrop-blur-sm text-white font-mono text-[10px] uppercase tracking-widest py-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>Open Full Profile</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </span>
+                </motion.button>
+
                 {/* Decorative border */}
                 <div className="absolute -bottom-6 -right-6 w-full h-full bg-brand-gold/15 rounded-2xl -z-10 border border-brand-gold/20" />
               </div>
@@ -106,7 +89,13 @@ export default function AboutView({ onOpenBooking, focusDoctor }: AboutViewProps
                     {doc.title}
                   </span>
                   <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-brand-charcoal">
-                    {doc.name}
+                    <button
+                      type="button"
+                      onClick={() => onViewDoctorProfile(doc.id)}
+                      className="text-left hover:text-[#0D9C89] transition-colors cursor-pointer focus:outline-none focus-visible:underline decoration-[#0D9C89] underline-offset-4"
+                    >
+                      {doc.name}
+                    </button>
                   </h2>
                 </div>
 
@@ -197,12 +186,21 @@ export default function AboutView({ onOpenBooking, focusDoctor }: AboutViewProps
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => onOpenBooking(doc.id)}
-                    className="px-6 py-3 bg-brand-emerald hover:bg-brand-emerald-dark text-white rounded-lg text-xs font-mono uppercase tracking-widest font-bold transition-colors cursor-pointer"
+                    onClick={() => onViewDoctorProfile(doc.id)}
+                    className="px-6 py-3 bg-brand-emerald hover:bg-brand-emerald-dark text-white rounded-lg text-xs font-mono uppercase tracking-widest font-bold transition-colors cursor-pointer inline-flex items-center justify-center gap-2"
                   >
-                    Book Consultation With Dr.{doc.name.split(' ')[1]}
+                    <span>View Dr. {doc.name.split(' ')[1]}'s Full Profile</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </motion.button>
-                  
+
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => onOpenBooking(doc.id)}
+                    className="px-6 py-3 bg-white border border-brand-emerald text-brand-emerald hover:bg-brand-emerald/5 rounded-lg text-xs font-mono uppercase tracking-widest font-bold transition-colors cursor-pointer"
+                  >
+                    Book Consultation
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
