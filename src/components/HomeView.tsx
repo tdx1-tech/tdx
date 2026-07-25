@@ -27,6 +27,7 @@ import mashal from '@/assets/images/mashal.webp';
 
 import { SERVICES, DOCTORS, CASE_STUDIES, GOOGLE_REVIEWS, FAQS, CLINIC_GOOGLE_REVIEW_URL } from '../data';
 import { Doctor, Service } from '../types';
+import { splitCompositeImage } from '../utils/splitComposite';
 
 const IconMap: Record<string, React.ComponentType<any>> = {
   Sparkles: Sparkles,
@@ -51,6 +52,11 @@ interface HomeCaseSliderCardProps {
   afterImg: string;
   doctorNote: string;
   category?: string;
+  /** Source photo is a single top/bottom composite (before on top, after below) */
+  isSplitComposite?: boolean;
+  fullImage?: string;
+  beforeCropY?: [number, number];
+  afterCropY?: [number, number];
 }
 
 function HomeCaseSliderCard({
@@ -59,11 +65,43 @@ function HomeCaseSliderCard({
   beforeImg,
   afterImg,
   doctorNote,
-  category
+  category,
+  isSplitComposite,
+  fullImage,
+  beforeCropY,
+  afterCropY
 }: HomeCaseSliderCardProps) {
   const [pos, setPos] = useState<number>(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState<boolean>(false);
+
+  // Composite clinical photos ship as one stacked image, so slice them into
+  // matching before/after frames before overlaying them in the slider.
+  const [splitResult, setSplitResult] = useState<{ before: string; after: string } | null>(null);
+
+  useEffect(() => {
+    const source = fullImage || beforeImg;
+    if (!isSplitComposite || !source) {
+      setSplitResult(null);
+      return;
+    }
+    let active = true;
+    splitCompositeImage(source, { beforeCropY, afterCropY })
+      .then((res) => {
+        if (active) setSplitResult({ before: res.before, after: res.after });
+      })
+      .catch(() => {
+        if (active) setSplitResult(null);
+      });
+    return () => {
+      active = false;
+    };
+  }, [isSplitComposite, fullImage, beforeImg, beforeCropY, afterCropY]);
+
+  const beforeSrc = splitResult ? splitResult.before : beforeImg;
+  const afterSrc = splitResult ? splitResult.after : afterImg;
+  // Hide the raw composite until the halves are ready, so no double image flashes in
+  const isPending = !!isSplitComposite && !splitResult;
 
   const handleMove = (clientX: number) => {
     if (!containerRef.current) return;
@@ -92,43 +130,53 @@ function HomeCaseSliderCard({
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
-        onMouseDown={() => setIsDragging(true)}
+        onMouseDown={(e) => {
+          setIsDragging(true);
+          handleMove(e.clientX);
+        }}
         onMouseUp={() => setIsDragging(false)}
         onMouseLeave={() => setIsDragging(false)}
-        className="relative w-full aspect-[16/10] rounded-[32px] overflow-hidden border border-brand-champagne shadow-md cursor-ew-resize select-none bg-brand-sand/20"
+        className="relative w-full aspect-[3/2] rounded-[32px] overflow-hidden border border-brand-champagne shadow-md cursor-ew-resize select-none bg-brand-sand/20"
       >
-        {/* AFTER IMAGE */}
+        {/* AFTER IMAGE - full frame base layer */}
         <img
-          src={afterImg}
+          src={afterSrc}
           alt={`${title} after treatment`}
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          className={`absolute inset-0 w-full h-full object-cover object-center pointer-events-none transition-opacity duration-300 ${isPending ? 'opacity-0' : 'opacity-100'}`}
           referrerPolicy="no-referrer"
         />
-        {/* AFTER Pill - bottom right */}
-        <div className="absolute bottom-4 right-4 bg-brand-charcoal/80 backdrop-blur-sm text-white font-mono text-[9px] uppercase tracking-widest px-3 py-1 rounded-full shadow-sm z-20 font-bold">
-          AFTER
+
+        {/* BEFORE IMAGE - identical frame, revealed by clip-path so both stay pixel-aligned */}
+        <img
+          src={beforeSrc}
+          alt={`${title} before treatment`}
+          className={`absolute inset-0 w-full h-full object-cover object-center pointer-events-none transition-opacity duration-300 ${isPending ? 'opacity-0' : 'opacity-100'}`}
+          style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+          referrerPolicy="no-referrer"
+        />
+
+        {/* Loading shimmer while the composite is being split */}
+        {isPending && (
+          <div className="absolute inset-0 bg-brand-sand/40 animate-pulse" />
+        )}
+
+        {/* BEFORE Pill - bottom left, fades out once the slider covers it */}
+        <div
+          className={`absolute bottom-4 left-4 bg-brand-charcoal/80 backdrop-blur-sm text-brand-sand font-mono text-[9px] uppercase tracking-widest px-3 py-1 rounded-full shadow-sm z-20 font-bold transition-opacity duration-200 ${pos < 22 ? 'opacity-0' : 'opacity-100'}`}
+        >
+          BEFORE
         </div>
 
-        {/* BEFORE IMAGE (clipped width) */}
+        {/* AFTER Pill - bottom right, fades out once the slider covers it */}
         <div
-          className="absolute inset-y-0 left-0 overflow-hidden"
-          style={{ width: `${pos}%` }}
+          className={`absolute bottom-4 right-4 bg-brand-charcoal/80 backdrop-blur-sm text-white font-mono text-[9px] uppercase tracking-widest px-3 py-1 rounded-full shadow-sm z-20 font-bold transition-opacity duration-200 ${pos > 78 ? 'opacity-0' : 'opacity-100'}`}
         >
-          <img
-            src={beforeImg}
-            alt={`${title} before treatment`}
-            className="absolute inset-0 w-[420px] sm:w-[580px] md:w-[700px] lg:w-[580px] xl:w-[700px] h-full object-cover max-w-none pointer-events-none"
-            referrerPolicy="no-referrer"
-          />
-          {/* BEFORE Pill - bottom left */}
-          <div className="absolute bottom-4 left-4 bg-brand-charcoal/80 backdrop-blur-sm text-brand-sand font-mono text-[9px] uppercase tracking-widest px-3 py-1 rounded-full shadow-sm z-20 font-bold">
-            BEFORE
-          </div>
+          AFTER
         </div>
 
         {/* SLIDER HANDLE LINE */}
         <div
-          className="absolute inset-y-0 w-0.5 bg-white cursor-ew-resize z-30"
+          className="absolute inset-y-0 w-0.5 bg-white/90 shadow-[0_0_10px_rgba(0,0,0,0.25)] cursor-ew-resize z-30"
           style={{ left: `${pos}%` }}
         >
           {/* Draggable Button with Double Arrows */}
@@ -167,9 +215,11 @@ function HomeCaseSliderCard({
 interface HomeViewProps {
   onOpenBooking: (doctorId?: 'mashal' | 'faizan' | null, serviceId?: string | null) => void;
   setActiveTab: (tab: string) => void;
+  /** Opens the About page scrolled to this doctor's full profile. */
+  onViewDoctorProfile: (doctorId: 'mashal' | 'faizan') => void;
 }
 
-export default function HomeView({ onOpenBooking, setActiveTab }: HomeViewProps) {
+export default function HomeView({ onOpenBooking, setActiveTab, onViewDoctorProfile }: HomeViewProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -425,15 +475,25 @@ export default function HomeView({ onOpenBooking, setActiveTab }: HomeViewProps)
                     {/* Offset backdrop layer */}
                     <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-full h-full rounded-2xl bg-[#0D9C89]/20 border border-[#0D9C89]/30" />
 
-                    {/* Foreground image card */}
-                    <div className="relative z-10 rounded-2xl overflow-hidden shadow-md aspect-[3/4] bg-gray-100 border border-gray-200/80">
+                    {/* Foreground image card - doubles as a link to the full profile */}
+                    <button
+                      type="button"
+                      onClick={() => onViewDoctorProfile(doc.id)}
+                      aria-label={`View ${doc.name}'s full profile`}
+                      className="relative z-10 block w-full rounded-2xl overflow-hidden shadow-md aspect-[3/4] bg-gray-100 border border-gray-200/80 cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0D9C89] focus-visible:ring-offset-2"
+                    >
                       <img
                         src={doc.id === 'mashal' ? mashal : doc.image}
                         alt={doc.name}
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                         referrerPolicy="no-referrer"
                       />
-                    </div>
+                      {/* Hover affordance so it reads as clickable */}
+                      <span className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-1.5 bg-brand-charcoal/75 backdrop-blur-sm text-white font-mono text-[10px] uppercase tracking-widest py-2.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span>View Full Profile</span>
+                        <ArrowRight className="w-3 h-3" />
+                      </span>
+                    </button>
                   </div>
                 </div>
 
@@ -444,7 +504,13 @@ export default function HomeView({ onOpenBooking, setActiveTab }: HomeViewProps)
                   </span>
 
                   <h3 className="font-serif text-3xl sm:text-4xl font-semibold text-brand-charcoal leading-tight">
-                    {doc.name}
+                    <button
+                      type="button"
+                      onClick={() => onViewDoctorProfile(doc.id)}
+                      className="text-left hover:text-[#0D9C89] transition-colors cursor-pointer focus:outline-none focus-visible:underline decoration-[#0D9C89] underline-offset-4"
+                    >
+                      {doc.name}
+                    </button>
                   </h3>
 
                   <p className="text-xs font-mono uppercase tracking-wider text-gray-500 font-medium">
@@ -476,7 +542,7 @@ export default function HomeView({ onOpenBooking, setActiveTab }: HomeViewProps)
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      onClick={() => setActiveTab('about')}
+                      onClick={() => onViewDoctorProfile(doc.id)}
                       className="px-6 py-3 border border-gray-200 hover:border-[#0D9C89] text-brand-charcoal hover:text-[#0D9C89] rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer"
                     >
                       View Credentials
@@ -762,6 +828,10 @@ export default function HomeView({ onOpenBooking, setActiveTab }: HomeViewProps)
                     afterImg={caseStudy.afterImage}
                     doctorNote={doctor?.name || 'Dr. TDX'}
                     category={caseStudy.category}
+                    isSplitComposite={caseStudy.isSplitComposite}
+                    fullImage={caseStudy.fullImage}
+                    beforeCropY={caseStudy.beforeCropY}
+                    afterCropY={caseStudy.afterCropY}
                   />
                 </motion.div>
               );

@@ -45,6 +45,9 @@ export interface CaseStudy {
   afterImage: string;
   fullImage?: string;
   isSplitComposite?: boolean;
+  /** Extra vertical crop (fractions 0-1 of that half's height) to correct a before/after zoom mismatch in the source composite photo. */
+  beforeCropY?: [number, number];
+  afterCropY?: [number, number];
   details: string[];
 }
 

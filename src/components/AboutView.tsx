@@ -3,16 +3,39 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Award, BookOpen, GraduationCap, Globe, ShieldAlert, CheckCircle, Phone, MessageCircle, MessageSquare } from 'lucide-react';
 import { DOCTORS } from '../data';
 
 interface AboutViewProps {
   onOpenBooking: (doctorId: 'mashal' | 'faizan') => void;
+  /** Deep-link request from elsewhere in the app to open a specific doctor's profile. */
+  focusDoctor?: { id: 'mashal' | 'faizan'; nonce: number } | null;
 }
 
-export default function AboutView({ onOpenBooking }: AboutViewProps) {
+export default function AboutView({ onOpenBooking, focusDoctor }: AboutViewProps) {
+  // Briefly ring the profile we jumped to so it's obvious which one was requested
+  const [highlightedId, setHighlightedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!focusDoctor) return;
+
+    // Wait a frame so the page cross-fade has laid out before we measure/scroll
+    const raf = requestAnimationFrame(() => {
+      document
+        .getElementById(`doctor-${focusDoctor.id}`)
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    setHighlightedId(focusDoctor.id);
+    const timer = setTimeout(() => setHighlightedId(null), 2200);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(timer);
+    };
+  }, [focusDoctor?.id, focusDoctor?.nonce]);
+
   return (
     <div className="space-y-24 py-12 pb-24">
       {/* Introduction Header */}
@@ -40,12 +63,18 @@ export default function AboutView({ onOpenBooking }: AboutViewProps) {
           return (
             <motion.div
               key={doc.id}
+              id={`doctor-${doc.id}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className={`flex flex-col lg:flex-row gap-12 items-center ${
+              /* scroll-mt clears the fixed navbar when deep-linked from another page */
+              className={`flex flex-col lg:flex-row gap-12 items-center scroll-mt-24 sm:scroll-mt-28 rounded-3xl transition-shadow duration-500 ${
                 isEven ? '' : 'lg:flex-row-reverse'
+              } ${
+                highlightedId === doc.id
+                  ? 'ring-2 ring-brand-gold/70 ring-offset-8 ring-offset-brand-sand'
+                  : 'ring-0'
               }`}
             >
               {/* Profile Image Column */}

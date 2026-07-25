@@ -328,6 +328,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     afterImage: teethWhitening,
     fullImage: teethWhitening,
     isSplitComposite: true,
+    // Source photo's "after" half was shot more zoomed-out than the "before" half;
+    // tighten its crop so the teeth land at matching scale/position in the slider.
+    afterCropY: [0.17, 0.92],
     details: [
       'Visible 4-6 shade improvement in one visit',
       'Gingival barrier protection ensuring zero gum irritation',

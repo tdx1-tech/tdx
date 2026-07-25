@@ -8,55 +8,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ArrowLeftRight, HelpCircle } from 'lucide-react';
 import { CASE_STUDIES } from '../data';
 import { CaseStudy } from '../types';
-
-// In-memory cache for split images to prevent re-processing
-const splitCache = new Map<string, { before: string; after: string; aspect: string }>();
-
-function splitCompositeImage(src: string): Promise<{ before: string; after: string; aspect: string }> {
-  if (splitCache.has(src)) {
-    return Promise.resolve(splitCache.get(src)!);
-  }
-
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.onload = () => {
-      const width = img.naturalWidth;
-      const height = img.naturalHeight;
-      const halfHeight = Math.floor(height / 2);
-
-      // Canvas for Before (Top Half)
-      const canvasBefore = document.createElement('canvas');
-      canvasBefore.width = width;
-      canvasBefore.height = halfHeight;
-      const ctxBefore = canvasBefore.getContext('2d');
-      if (ctxBefore) {
-        ctxBefore.drawImage(img, 0, 0, width, halfHeight, 0, 0, width, halfHeight);
-      }
-
-      // Canvas for After (Bottom Half)
-      const canvasAfter = document.createElement('canvas');
-      canvasAfter.width = width;
-      canvasAfter.height = halfHeight;
-      const ctxAfter = canvasAfter.getContext('2d');
-      if (ctxAfter) {
-        ctxAfter.drawImage(img, 0, halfHeight, width, halfHeight, 0, 0, width, halfHeight);
-      }
-
-      const beforeUrl = canvasBefore.toDataURL('image/jpeg', 0.95);
-      const afterUrl = canvasAfter.toDataURL('image/jpeg', 0.95);
-
-      const ratio = width / halfHeight;
-      const aspectStr = ratio > 1.2 ? 'aspect-[4/3]' : ratio > 0.9 ? 'aspect-square' : 'aspect-[3/4]';
-
-      const result = { before: beforeUrl, after: afterUrl, aspect: aspectStr };
-      splitCache.set(src, result);
-      resolve(result);
-    };
-    img.onerror = reject;
-    img.src = src;
-  });
-}
+import { splitCompositeImage } from '../utils/splitComposite';
 
 interface CaseStudyCardProps {
   study: CaseStudy;
@@ -86,13 +38,16 @@ function CaseStudyCard({ study, onSelectBook }: CaseStudyCardProps) {
 
   useEffect(() => {
     if (study.isSplitComposite && study.fullImage) {
-      splitCompositeImage(study.fullImage)
+      splitCompositeImage(study.fullImage, {
+        beforeCropY: study.beforeCropY,
+        afterCropY: study.afterCropY,
+      })
         .then((res) => setSplitResult(res))
         .catch(() => setSplitResult(null));
     } else {
       setSplitResult(null);
     }
-  }, [study.id, study.fullImage, study.isSplitComposite]);
+  }, [study.id, study.fullImage, study.isSplitComposite, study.beforeCropY, study.afterCropY]);
 
   const handleMove = (clientX: number) => {
     if (!containerRef.current) return;

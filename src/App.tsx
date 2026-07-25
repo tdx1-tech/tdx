@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Preloader from './components/Preloader';
 import Navbar from './components/Navbar';
@@ -24,6 +24,11 @@ export default function App() {
   const [preSelectedDoc, setPreSelectedDoc] = useState<'mashal' | 'faizan' | null>(null);
   const [preSelectedSrv, setPreSelectedSrv] = useState<string | null>(null);
   const [recentAppointmentsCount, setRecentAppointmentsCount] = useState<number>(0);
+
+  // Deep-link request for a specific doctor's profile on the About page. The nonce
+  // lets AboutView re-run its scroll even when the same doctor is requested twice.
+  const [doctorFocus, setDoctorFocus] = useState<{ id: 'mashal' | 'faizan'; nonce: number } | null>(null);
+  const skipNextScrollTop = useRef<boolean>(false);
 
   // Load appointments count from localStorage on mount and updates
   const loadAppointmentsCount = () => {
@@ -53,10 +58,29 @@ export default function App() {
     setIsBookingOpen(true);
   };
 
-  // Scroll to top upon page navigation
+  // Scroll to top upon page navigation, unless we're deep-linking straight to a
+  // doctor profile - in that case AboutView scrolls to the requested doctor instead.
   useEffect(() => {
+    if (skipNextScrollTop.current) {
+      skipNextScrollTop.current = false;
+      return;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab]);
+
+  // Ordinary tab navigation. Clears any pending doctor deep-link so that returning
+  // to About via the navbar lands at the top instead of the last doctor clicked.
+  const navigateToTab = (tab: string) => {
+    setDoctorFocus(null);
+    setActiveTab(tab);
+  };
+
+  // Jump to a specific doctor's full profile on the About page
+  const handleViewDoctorProfile = (doctorId: 'mashal' | 'faizan') => {
+    skipNextScrollTop.current = true;
+    setDoctorFocus((prev) => ({ id: doctorId, nonce: (prev?.nonce ?? 0) + 1 }));
+    setActiveTab('about');
+  };
 
   return (
     <div className="min-h-screen bg-brand-sand text-brand-charcoal flex flex-col font-sans antialiased selection:bg-brand-emerald selection:text-white">
@@ -70,7 +94,7 @@ export default function App() {
       {/* Premium Navigation Header */}
       <Navbar
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={navigateToTab}
         onOpenBooking={(docId) => handleOpenBooking(docId)}
       />
 
@@ -85,14 +109,16 @@ export default function App() {
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
           >
             {activeTab === 'home' && (
-              <HomeView 
-                onOpenBooking={handleOpenBooking} 
-                setActiveTab={setActiveTab} 
+              <HomeView
+                onOpenBooking={handleOpenBooking}
+                setActiveTab={navigateToTab}
+                onViewDoctorProfile={handleViewDoctorProfile}
               />
             )}
             {activeTab === 'about' && (
-              <AboutView 
-                onOpenBooking={(docId) => handleOpenBooking(docId)} 
+              <AboutView
+                onOpenBooking={(docId) => handleOpenBooking(docId)}
+                focusDoctor={doctorFocus}
               />
             )}
             {activeTab === 'services' && (
@@ -116,9 +142,9 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer 
-        setActiveTab={setActiveTab} 
-        onOpenBooking={(docId) => handleOpenBooking(docId)} 
+      <Footer
+        setActiveTab={navigateToTab}
+        onOpenBooking={(docId) => handleOpenBooking(docId)}
       />
 
       {/* Global Booking Wizard Overlay */}
