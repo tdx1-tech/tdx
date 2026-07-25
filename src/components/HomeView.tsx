@@ -11,6 +11,20 @@ import {
   Crown, Sun, Activity, Cpu, Heart, Zap, Layers, Grid, EyeOff, Smile, Maximize2, X, ChevronLeft
 } from 'lucide-react';
 import heroVideo from '../assets/The Dental Experience TDX.mp4';
+
+// Gallery images
+import clinicTech from '../assets/images/Gallery/clinic-tech.jpeg';
+import drMashalMirrorSelfie from '../assets/images/Gallery/dr-mashal-mirror-selfie.jpg';
+import drMashalTreatingKids from '../assets/images/Gallery/dr-mashal-treating-kids.jpeg';
+import drFaizanInScotland from '../assets/images/Gallery/dr-faizan-in-scotland.webp';
+import drMashalConf from '../assets/images/Gallery/dr-mashal-conf.jpg';
+import clinicTech2 from '../assets/images/Gallery/clinic-tech-2.webp';
+import drFaizanInClinic from '../assets/images/Gallery/dr-faizan-in-clinic.jpeg';
+import clinicWall from '../assets/images/Gallery/clinic-wall.webp';
+import tdxWallLogo from '../assets/images/Gallery/tdx-wall-logo.webp';
+import clinicInterior from '../assets/images/Gallery/clinic-interior.webp';
+import mashal from '../assets/images/mashal.webp';
+
 import { SERVICES, DOCTORS, CASE_STUDIES, GOOGLE_REVIEWS, FAQS, CLINIC_GOOGLE_REVIEW_URL } from '../data';
 import { Doctor, Service } from '../types';
 
@@ -205,70 +219,70 @@ export default function HomeView({ onOpenBooking, setActiveTab }: HomeViewProps)
 
   const galleryImages = [
     {
-      url: '/src/assets/images/Gallery/clinic tech.jpeg',
+      url: clinicTech,
       category: 'Therapy Room',
       title: 'Treatment Room',
       desc: 'A modern treatment space designed for patient comfort and precise care.',
       gridClasses: 'md:col-span-2 md:row-span-2 aspect-square'
     },
     {
-      url: '/src/assets/images/Gallery/Dr Mashal Mirror selfie.jpg',
+      url: drMashalMirrorSelfie,
       category: 'Smile Design',
       title: 'Dr. Mashal Mirror Selfie',
       desc: 'Authentic team energy and confidence in our patient-first smile studio.',
       gridClasses: 'md:col-span-1 md:row-span-1 aspect-square'
     },
     {
-      url: '/src/assets/images/Gallery/Dr Mashal treating kids.jpeg',
+      url: drMashalTreatingKids,
       category: 'Family Care',
       title: 'Pediatric Treatment',
       desc: 'Compassionate pediatric dentistry in a calm, welcoming environment.',
       gridClasses: 'md:col-span-1 md:row-span-1 aspect-square'
     },
     {
-      url: '/src/assets/images/Gallery/Dr Faizan in Scotland.webp',
+      url: drFaizanInScotland,
       category: 'Expertise',
       title: 'International Credentials',
       desc: 'Professional development and global training are part of our clinical foundation.',
       gridClasses: 'md:col-span-1 md:row-span-1 aspect-square'
     },
     {
-      url: '/src/assets/images/Gallery/dr mashal conf.jpg',
+      url: drMashalConf,
       category: 'Consultation',
       title: 'Patient Consultation',
       desc: 'Detailed patient review and customized smile planning led by our specialist team.',
       gridClasses: 'md:col-span-1 md:row-span-1 aspect-square'
     },
     {
-      url: '/src/assets/images/Gallery/clinic tech 2.webp',
+      url: clinicTech2,
       category: 'Technology',
       title: 'Clinical Technology',
       desc: 'Advanced clinical equipment supports accurate diagnostics and efficient treatment.',
       gridClasses: 'md:col-span-1 md:row-span-1 aspect-square'
     },
     {
-      url: '/src/assets/images/Gallery/Dr Faizan in Clinic .jpeg',
+      url: drFaizanInClinic,
       category: 'Orthodontics',
       title: 'Dr. Faizan in Clinic',
       desc: 'A real patient consultation moment captured in our dedicated orthodontic suite.',
       gridClasses: 'md:col-span-1 md:row-span-1 aspect-square'
     },
     {
-      url: '/src/assets/images/Gallery/clinic wall .webp',
+      url: clinicWall,
       category: 'Clinic Brand',
       title: 'Brand Wall',
       desc: 'Signature branding and interior details that express our premium clinic identity.',
       gridClasses: 'md:col-span-1 md:row-span-1 aspect-square'
     },
     {
-      url: '/src/assets/images/Gallery/TDX wall logo.webp',
+      url: tdxWallLogo,
       category: 'Clinic Identity',
       title: 'TDX Wall Logo',
       desc: 'A bold brand statement that welcomes patients into our clinic environment.',
       gridClasses: 'md:col-span-1 md:row-span-1 aspect-square'
     },
     {
-      url: '/src/assets/images/Gallery/clinic interior.webp',
+      url: clinicInterior,
       category: 'Interior',
       title: 'Clinic Interior',
       desc: 'A spacious clinical interior showcasing the calm, premium atmosphere of our practice.',
@@ -289,21 +303,15 @@ export default function HomeView({ onOpenBooking, setActiveTab }: HomeViewProps)
             muted
             playsInline
             className="w-full h-full object-cover"
-            poster="/src/assets/images/clinic_lobby_1784464916452.jpg"
+            poster={clinicInterior}
           >
             <source src={heroVideo} type="video/mp4" />
-            {/* 1. Prioritize user's own video uploaded directly to the public/ folder (serves at root /) */}
-            <source src="/clinic_video.mp4" type="video/mp4" />
-            <source src="/clinic-video.mp4" type="video/mp4" />
-            {/* 2. Prioritize user's own video uploaded to src/assets/ */}
-            <source src="/src/assets/clinic_video.mp4" type="video/mp4" />
-            <source src="/src/assets/images/clinic_video.mp4" type="video/mp4" />
-            {/* 3. Highly stable, premium, copyright-free clinical background video of a dental operatory and patient smile */}
+            {/* Fallback sources */}
             <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054773d1e3e6f9661331c19b674cf48&profile_id=165&oauth2_token_id=57447761" type="video/mp4" />
             <source src="https://assets.mixkit.co/videos/preview/mixkit-dentist-working-on-a-patients-mouth-44444-large.mp4" type="video/mp4" />
             {/* Fallback image */}
             <img
-              src="/src/assets/images/clinic interior.webp"
+              src={clinicInterior}
               className="w-full h-full object-cover"
               alt="The Dental Experience Lobby"
             />
@@ -405,7 +413,7 @@ export default function HomeView({ onOpenBooking, setActiveTab }: HomeViewProps)
                     {/* Foreground image card */}
                     <div className="relative z-10 rounded-2xl overflow-hidden shadow-md aspect-[3/4] bg-gray-100 border border-gray-200/80">
                       <img
-                        src={doc.id === 'mashal' ? '/src/assets/images/Mashal.webp' : doc.image}
+                        src={doc.id === 'mashal' ? mashal : doc.image}
                         alt={doc.name}
                         className="w-full h-full object-cover object-top"
                         referrerPolicy="no-referrer"

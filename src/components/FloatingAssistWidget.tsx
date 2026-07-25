@@ -6,6 +6,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, ChevronRight, Sparkles, Phone, MessageCircle } from 'lucide-react';
+import drMashal from '../assets/images/dr-mashal.webp';
+import faizan from '../assets/images/faizan.webp';
 
 interface FloatingAssistWidgetProps {
   onOpenBooking?: (doctorId: 'mashal' | 'faizan') => void;
@@ -37,7 +39,7 @@ export default function FloatingAssistWidget({ onOpenBooking }: FloatingAssistWi
       role: 'FCPS Restorative & Aesthetics',
       whatsapp: 'https://wa.me/923165944327?text=Hello%20Dr.%20Mashal,%20I%20have%20a%20question%20regarding%20The%20Dental%20Experience.',
       phone: '+92 316 5944327',
-      image: '/src/assets/images/Dr Mashal.webp',
+      image: drMashal,
       badgeColor: 'bg-[#0D9C89]/10 text-[#0D9C89] border-[#0D9C89]/20'
     },
     {
@@ -46,7 +48,7 @@ export default function FloatingAssistWidget({ onOpenBooking }: FloatingAssistWi
       role: 'Consultant Orthodontist',
       whatsapp: 'https://wa.me/923439591498?text=Hello%20Dr.%20Faizan,%20I%20have%20a%20question%20regarding%20The%20Dental%20Experience.',
       phone: '+92 343 9591498',
-      image: '/src/assets/images/Faizan.webp',
+      image: faizan,
       badgeColor: 'bg-[#0D9C89]/10 text-[#0D9C89] border-[#0D9C89]/20'
     }
   ];

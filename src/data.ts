@@ -5,6 +5,25 @@
 
 import { Doctor, Service, CaseStudy, GoogleReview, FAQItem } from './types';
 
+// Case study images - Dr. Mashal
+import diastemaClosure from '@/assets/images/Cases/dr-mashal-cases/diastema-closure.jpeg';
+import toothRestoration from '@/assets/images/Cases/dr-mashal-cases/tooth-restoration.jpeg';
+import teethWhitening from '@/assets/images/Cases/dr-mashal-cases/teeth-whitening.jpeg';
+import teethWhiteningBleaching from '@/assets/images/Cases/dr-mashal-cases/teeth-whitening-bleaching.jpeg';
+import toothRestoration2 from '@/assets/images/Cases/dr-mashal-cases/tooth-restoration-2.jpeg';
+
+// Case study images - Dr. Faizan
+import bracesBefore from '@/assets/images/Cases/dr-faizan-cases/braces-before.png';
+import bracesAfter from '@/assets/images/Cases/dr-faizan-cases/braces-after.png';
+import before2 from '@/assets/images/Cases/dr-faizan-cases/before-2.png';
+import after2 from '@/assets/images/Cases/dr-faizan-cases/after-2.png';
+import estheticCrownLengtheningBefore from '@/assets/images/Cases/dr-faizan-cases/esthetic-crown-lengthening-before.png';
+import estheticCrownLengtheningAfter from '@/assets/images/Cases/dr-faizan-cases/esthetic-crown-lengthening-after.png';
+
+// Doctor profile images
+import drMashal from '@/assets/images/dr-mashal.webp';
+import faizan from '@/assets/images/faizan.webp';
+
 export const DOCTORS: Doctor[] = [
   {
     id: 'mashal',
@@ -27,7 +46,7 @@ export const DOCTORS: Doctor[] = [
       'Distinction in Clinical Endodontics'
     ],
     languages: ['English', 'Pashto', 'Urdu'],
-    image: '/src/assets/images/Dr Mashal.webp',
+    image: drMashal,
     whatsappNumber: '+923165944327',
     phoneNumber: '+923165944327'
   },
@@ -53,7 +72,7 @@ export const DOCTORS: Doctor[] = [
       'Principal Facilitator of National Orthodontic Workshops'
     ],
     languages: ['English', 'Urdu', 'Pashto', 'Punjabi'],
-    image: '/src/assets/images/Faizan.webp',
+    image: faizan,
     whatsappNumber: '+923439591498',
     phoneNumber: '+923165944327'
   }
@@ -271,9 +290,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     doctor: 'mashal',
     category: 'Cosmetic Dentistry / Gap Closure',
     description: 'Patient presented with a prominent central gap (diastema) between upper incisors. Dr. Mashal achieved complete closure using direct aesthetic composite resin without grinding natural enamel.',
-    beforeImage: '/src/assets/images/Cases/Dr Mashal Cases/Diastema closure.jpeg',
-    afterImage: '/src/assets/images/Cases/Dr Mashal Cases/Diastema closure.jpeg',
-    fullImage: '/src/assets/images/Cases/Dr Mashal Cases/Diastema closure.jpeg',
+    beforeImage: diastemaClosure,
+    afterImage: diastemaClosure,
+    fullImage: diastemaClosure,
     isSplitComposite: true,
     details: [
       'Non-invasive direct composite bonding',
@@ -288,9 +307,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     doctor: 'mashal',
     category: 'Operative Dentistry / Anterior Restoration',
     description: 'Restoration of chipped, worn front incisor edges and irregular margins, re-establishing a symmetrical, natural smile line.',
-    beforeImage: '/src/assets/images/Cases/Dr Mashal Cases/Tooth Restoration.jpeg',
-    afterImage: '/src/assets/images/Cases/Dr Mashal Cases/Tooth Restoration.jpeg',
-    fullImage: '/src/assets/images/Cases/Dr Mashal Cases/Tooth Restoration.jpeg',
+    beforeImage: toothRestoration,
+    afterImage: toothRestoration,
+    fullImage: toothRestoration,
     isSplitComposite: true,
     details: [
       'Micro-aesthetic edge reconstruction',
@@ -305,9 +324,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     doctor: 'mashal',
     category: 'Smile Makeover / Teeth Whitening',
     description: 'Professional in-office whitening procedure eliminating deep intrinsic yellowing and age-related discoloration, dramatically brightening the shade.',
-    beforeImage: '/src/assets/images/Cases/Dr Mashal Cases/Teeth Whitening.jpeg',
-    afterImage: '/src/assets/images/Cases/Dr Mashal Cases/Teeth Whitening.jpeg',
-    fullImage: '/src/assets/images/Cases/Dr Mashal Cases/Teeth Whitening.jpeg',
+    beforeImage: teethWhitening,
+    afterImage: teethWhitening,
+    fullImage: teethWhitening,
     isSplitComposite: true,
     details: [
       'Visible 4-6 shade improvement in one visit',
@@ -322,9 +341,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     doctor: 'mashal',
     category: 'Enamel Bleaching / Deep Stain Removal',
     description: 'Targeted bleaching treatment removing tough fluorosis and tea/coffee stains, revealing clear, luminous tooth enamel.',
-    beforeImage: '/src/assets/images/Cases/Dr Mashal Cases/Teeth whitening ( Bleaching ).jpeg',
-    afterImage: '/src/assets/images/Cases/Dr Mashal Cases/Teeth whitening ( Bleaching ).jpeg',
-    fullImage: '/src/assets/images/Cases/Dr Mashal Cases/Teeth whitening ( Bleaching ).jpeg',
+    beforeImage: teethWhiteningBleaching,
+    afterImage: teethWhiteningBleaching,
+    fullImage: teethWhiteningBleaching,
     isSplitComposite: true,
     details: [
       'Comprehensive upper & lower arch treatment',
@@ -339,9 +358,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     doctor: 'mashal',
     category: 'Endodontic & Posterior Restoration',
     description: 'Removal of deep occlusal molar decay and precise anatomical cusp rebuilding, restoring full biting strength and natural molar anatomy.',
-    beforeImage: '/src/assets/images/Cases/Dr Mashal Cases/Tooth restoration (2).jpeg',
-    afterImage: '/src/assets/images/Cases/Dr Mashal Cases/Tooth restoration (2).jpeg',
-    fullImage: '/src/assets/images/Cases/Dr Mashal Cases/Tooth restoration (2).jpeg',
+    beforeImage: toothRestoration2,
+    afterImage: toothRestoration2,
+    fullImage: toothRestoration2,
     isSplitComposite: true,
     details: [
       'Complete decay excavation',
@@ -359,8 +378,8 @@ export const CASE_STUDIES: CaseStudy[] = [
     doctor: 'faizan',
     category: 'Orthodontics / Fixed Braces',
     description: 'Patient presented with overlapping, uneven front teeth and a compromised smile line. Dr. Faizan achieved a complete, natural smile transformation through precision braces treatment.',
-    beforeImage: '/src/assets/images/Cases/Dr Faizan Cases/braces before.png',
-    afterImage: '/src/assets/images/Cases/Dr Faizan Cases/Braces after.png',
+    beforeImage: bracesBefore,
+    afterImage: bracesAfter,
     isSplitComposite: false,
     details: [
       'Full arch alignment and spacing correction',
@@ -373,8 +392,8 @@ export const CASE_STUDIES: CaseStudy[] = [
     doctor: 'faizan',
     category: 'Orthodontics / Gap Closure',
     description: 'Prominent midline gap between central incisors and mild crowding resolved with targeted orthodontic treatment for a confident, gap-free smile.',
-    beforeImage: '/src/assets/images/Cases/Dr Faizan Cases/Before 2.png',
-    afterImage: '/src/assets/images/Cases/Dr Faizan Cases/after 2.png',
+    beforeImage: before2,
+    afterImage: after2,
     isSplitComposite: false,
     details: [
       'Closed midline diastema without extractions',
@@ -387,8 +406,8 @@ export const CASE_STUDIES: CaseStudy[] = [
     doctor: 'faizan',
     category: 'Periodontal / Esthetic Crown Lengthening',
     description: 'Patient with excessive gingival display (gummy smile) underwent esthetic crown lengthening to expose a greater proportion of the tooth crowns, producing a balanced, proportionate smile.',
-    beforeImage: '/src/assets/images/Cases/Dr Faizan Cases/Esthetic Crown Lengthening BEFORE.png',
-    afterImage: '/src/assets/images/Cases/Dr Faizan Cases/Esthetic Crown Lengthening AFTER.png',
+    beforeImage: estheticCrownLengtheningBefore,
+    afterImage: estheticCrownLengtheningAfter,
     isSplitComposite: false,
     details: [
       'Reduced gingival display for a balanced smile',

@@ -9,6 +9,8 @@ import {
   Sparkles, Crown, Sun, CheckCircle, Shield, Activity, Cpu, Heart, 
   ArrowRight, Clock, HelpCircle, Check, Award, ChevronRight, Zap, Layers, Grid, EyeOff, Smile
 } from 'lucide-react';
+import drMashal from '../assets/images/dr-mashal.webp';
+import faizan from '../assets/images/faizan.webp';
 import { SERVICES, DOCTORS } from '../data';
 import { Service } from '../types';
 
@@ -291,7 +293,7 @@ export default function ServicesView({ onOpenBooking, preSelectedDoctorId = null
               activeDoctorTab === 'mashal' ? 'border-[#0D9C89] shadow-sm' : 'border-brand-champagne'
             }`}>
               <img
-                src="/src/assets/images/Dr Mashal.webp"
+                src={drMashal}
                 alt="Dr. Mashal"
                 className="w-full h-full object-cover object-top scale-110"
                 referrerPolicy="no-referrer"
@@ -324,7 +326,7 @@ export default function ServicesView({ onOpenBooking, preSelectedDoctorId = null
               activeDoctorTab === 'faizan' ? 'border-brand-mint shadow-sm' : 'border-brand-champagne'
             }`}>
               <img
-                src="/src/assets/images/Faizan.webp"
+                src={faizan}
                 alt="Dr. Faizan"
                 className="w-full h-full object-cover object-top"
                 style={{ objectPosition: 'center 5%', transform: 'scale(1)' }}
