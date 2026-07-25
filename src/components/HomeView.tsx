@@ -50,6 +50,7 @@ interface HomeCaseSliderCardProps {
   beforeImg: string;
   afterImg: string;
   doctorNote: string;
+  category?: string;
 }
 
 function HomeCaseSliderCard({
@@ -57,7 +58,8 @@ function HomeCaseSliderCard({
   desc,
   beforeImg,
   afterImg,
-  doctorNote
+  doctorNote,
+  category
 }: HomeCaseSliderCardProps) {
   const [pos, setPos] = useState<number>(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -136,14 +138,27 @@ function HomeCaseSliderCard({
         </div>
       </div>
 
-      {/* Texts Below as in the screenshot */}
-      <div className="px-1 space-y-1 text-left">
-        <h3 className="font-serif text-lg font-semibold text-brand-charcoal leading-tight">
-          {title}
-        </h3>
-        <p className="text-xs text-gray-500 font-sans leading-relaxed">
-          {desc}
-        </p>
+      {/* Caption Below Slider */}
+      <div className="px-1 space-y-2.5">
+        <div className="flex items-center justify-between gap-2">
+          {category && (
+            <span className="font-mono text-[10px] uppercase tracking-widest text-[#0D9C89] font-bold bg-[#0D9C89]/10 px-2.5 py-1 rounded-full border border-[#0D9C89]/20">
+              {category}
+            </span>
+          )}
+          <span className="text-xs text-gray-500 font-sans font-medium ml-auto">
+            {doctorNote}
+          </span>
+        </div>
+
+        <div className="space-y-1">
+          <h3 className="font-serif text-lg sm:text-xl font-semibold text-brand-charcoal leading-snug">
+            {title}
+          </h3>
+          <p className="text-xs sm:text-sm text-gray-500 font-sans leading-relaxed">
+            {desc}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -746,6 +761,7 @@ export default function HomeView({ onOpenBooking, setActiveTab }: HomeViewProps)
                     beforeImg={caseStudy.beforeImage}
                     afterImg={caseStudy.afterImage}
                     doctorNote={doctor?.name || 'Dr. TDX'}
+                    category={caseStudy.category}
                   />
                 </motion.div>
               );
