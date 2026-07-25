@@ -6,8 +6,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, ChevronRight, Sparkles, Phone, MessageCircle } from 'lucide-react';
-import drMashal from '../assets/images/dr-mashal.webp';
-import faizan from '../assets/images/faizan.webp';
+import drMashal from '@/assets/images/dr-mashal.webp';
+import faizan from '@/assets/images/faizan.webp';
 
 interface FloatingAssistWidgetProps {
   onOpenBooking?: (doctorId: 'mashal' | 'faizan') => void;

@@ -10,20 +10,20 @@ import {
   ChevronRight, ArrowRight, CheckCircle, Clock, ChevronUp, Users, Info, ArrowLeftRight,
   Crown, Sun, Activity, Cpu, Heart, Zap, Layers, Grid, EyeOff, Smile, Maximize2, X, ChevronLeft
 } from 'lucide-react';
-import heroVideo from '../assets/The Dental Experience TDX.mp4';
+import heroVideo from '@/assets/The Dental Experience TDX.mp4';
 
 // Gallery images
-import clinicTech from '../assets/images/Gallery/clinic-tech.jpeg';
-import drMashalMirrorSelfie from '../assets/images/Gallery/dr-mashal-mirror-selfie.jpg';
-import drMashalTreatingKids from '../assets/images/Gallery/dr-mashal-treating-kids.jpeg';
-import drFaizanInScotland from '../assets/images/Gallery/dr-faizan-in-scotland.webp';
-import drMashalConf from '../assets/images/Gallery/dr-mashal-conf.jpg';
-import clinicTech2 from '../assets/images/Gallery/clinic-tech-2.webp';
-import drFaizanInClinic from '../assets/images/Gallery/dr-faizan-in-clinic.jpeg';
-import clinicWall from '../assets/images/Gallery/clinic-wall.webp';
-import tdxWallLogo from '../assets/images/Gallery/tdx-wall-logo.webp';
-import clinicInterior from '../assets/images/Gallery/clinic-interior.webp';
-import mashal from '../assets/images/mashal.webp';
+import clinicTech from '@/assets/images/Gallery/clinic-tech.jpeg';
+import drMashalMirrorSelfie from '@/assets/images/Gallery/dr-mashal-mirror-selfie.jpg';
+import drMashalTreatingKids from '@/assets/images/Gallery/dr-mashal-treating-kids.jpeg';
+import drFaizanInScotland from '@/assets/images/Gallery/dr-faizan-in-scotland.webp';
+import drMashalConf from '@/assets/images/Gallery/dr-mashal-conf.jpg';
+import clinicTech2 from '@/assets/images/Gallery/clinic-tech-2.webp';
+import drFaizanInClinic from '@/assets/images/Gallery/dr-faizan-in-clinic.jpeg';
+import clinicWall from '@/assets/images/Gallery/clinic-wall.webp';
+import tdxWallLogo from '@/assets/images/Gallery/tdx-wall-logo.webp';
+import clinicInterior from '@/assets/images/Gallery/clinic-interior.webp';
+import mashal from '@/assets/images/mashal.webp';
 
 import { SERVICES, DOCTORS, CASE_STUDIES, GOOGLE_REVIEWS, FAQS, CLINIC_GOOGLE_REVIEW_URL } from '../data';
 import { Doctor, Service } from '../types';

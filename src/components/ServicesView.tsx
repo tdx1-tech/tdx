@@ -9,8 +9,8 @@ import {
   Sparkles, Crown, Sun, CheckCircle, Shield, Activity, Cpu, Heart, 
   ArrowRight, Clock, HelpCircle, Check, Award, ChevronRight, Zap, Layers, Grid, EyeOff, Smile
 } from 'lucide-react';
-import drMashal from '../assets/images/dr-mashal.webp';
-import faizan from '../assets/images/faizan.webp';
+import drMashal from '@/assets/images/dr-mashal.webp';
+import faizan from '@/assets/images/faizan.webp';
 import { SERVICES, DOCTORS } from '../data';
 import { Service } from '../types';
 
