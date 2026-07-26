@@ -43,7 +43,7 @@ export default function Footer({ setActiveTab, onOpenBooking }: FooterProps) {
             </div>
 
             <p className="text-xs text-gray-300 leading-relaxed font-light">
-              Led by Pakistan's premier FCPS specialists, <strong className="text-white font-semibold">Dr. Mashal Zeb Jan</strong> and <strong className="text-white font-semibold">Dr. Faizan Ul Hassan</strong>, we bring world-class precision, compassionate care, and mastery to aesthetic transformations and advanced orthodontics.
+              Led by Pakistan's premier FCPS specialists, <strong className="text-white font-semibold">Dr. Faizan Ul Hassan</strong> and <strong className="text-white font-semibold">Dr. Mashal Zeb Jan</strong>, we bring world-class precision, compassionate care, and mastery to aesthetic transformations and advanced orthodontics.
             </p>
 
             <div className="pt-1 flex items-center space-x-2">

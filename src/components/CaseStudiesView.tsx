@@ -35,15 +35,15 @@ export default function CaseStudiesView() {
         </h1>
         <div className="w-16 h-0.5 bg-[#0D9C89]/30 mx-auto" />
         <p className="font-sans text-gray-500 text-sm leading-relaxed max-w-2xl mx-auto">
-          View authentic clinical cases treated on-site by Dr. Mashal Zeb Jan and Dr. Faizan Ul Hassan. Drag the comparison slider or toggle to view the original split photo.
+          View authentic clinical cases treated on-site by Dr. Faizan Ul Hassan and Dr. Mashal Zeb Jan. Drag the comparison slider or toggle to view the original split photo.
         </p>
 
         {/* Doctor Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-2 pt-4 font-mono text-xs">
           {[
             { id: 'all', label: 'All Cases' },
-            { id: 'mashal', label: "Dr. Mashal's Cases" },
             { id: 'faizan', label: "Dr. Faizan's Cases" },
+            { id: 'mashal', label: "Dr. Mashal's Cases" },
           ].map((tab) => (
             <motion.button
               key={tab.id}

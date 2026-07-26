@@ -38,90 +38,6 @@ import faizanAbroad from '@/assets/images/Gallery/dr-faizan-in-scotland.webp';
 
 export const DOCTORS: Doctor[] = [
   {
-    id: 'mashal',
-    slug: 'dr-mashal-zeb-jan',
-    name: 'Dr. Mashal Zeb Jan',
-    fullName: 'Dr. Mashal Zeb Jan',
-    title: "Pakistan's Youngest FCPS Specialist in Endodontics & Operative Dentistry",
-    specialties: ['Root Canal Therapy', 'Porcelain Veneers', 'Smile Design', 'Aesthetic Restorations', 'Dental Bonding', 'FCPS (Endodontics and Operative Dentistry)'],
-    bio: 'Expert endodontic and restorative dental care - from a consultant who set the standard before most had even begun.',
-    detailedBio: 'Dr. Mashal Zeb Jan is a specialist in Endodontics and Operative Dentistry, holding the prestigious FCPS qualification awarded by the College of Physicians and Surgeons Pakistan. She is the first resident of Rehman College of Dentistry to clear FCPS Part II, and the youngest consultant in her specialty to pass the examination in Pakistan - clearing it on her first attempt. She brings that same standard of precision and commitment to every patient she treats.',
-    education: [
-      'BDS, FCPS (Endodontics & Operative Dentistry)'
-    ],
-    certs: [
-      'Certified Digital Smile Designer (DSD)',
-      'Advanced Micro-Endodontics Training Certification'
-    ],
-    honors: [
-      'Gold Medal in Restorative & Operative Dentistry',
-      'Best Clinical Case Presentation (CPSP)',
-      'Distinction in Clinical Endodontics'
-    ],
-    languages: ['English', 'Pashto', 'Urdu'],
-    image: drMashal,
-    photos: [
-      {
-        src: drMashal,
-        alt: 'Dr. Mashal Zeb Jan in convocation robes holding her College of Physicians and Surgeons Pakistan scroll',
-        caption: 'FCPS convocation - College of Physicians and Surgeons Pakistan'
-      },
-      {
-        src: mashalMirrorSelfie,
-        alt: 'Dr. Mashal Zeb Jan',
-        caption: 'Outside the clinic'
-      },
-      {
-        src: mashalTraining,
-        alt: 'Dr. Mashal Zeb Jan at an international hands-on cosmetic dentistry course',
-        caption: 'Hands-on training abroad with international faculty'
-      },
-      {
-        src: mashalPediatric,
-        alt: 'Dr. Mashal Zeb Jan speaking with a young patient during a consultation',
-        caption: 'Chairside with a young patient - unhurried, child-friendly care'
-      }
-    ],
-    // Continuing education. The first two entries restate certifications the
-    // clinic already publishes (see `certs` above). The third is inferred from
-    // the training photograph and needs the doctor to confirm the real course
-    // name, faculty and year - or to be removed. Extend with her full CPD record.
-    courses: [
-      {
-        title: 'Digital Smile Design (DSD)',
-        provider: 'Digital Smile Design Academy',
-        role: 'Certified Designer',
-        description:
-          'Photography-led, facially driven smile planning - the workflow behind every veneer and smile makeover case at the clinic.'
-      },
-      {
-        title: 'Advanced Micro-Endodontics',
-        provider: 'Advanced Endodontic Training Programme',
-        role: 'Certified',
-        description:
-          'Root canal therapy: canal location, negotiation of calcified anatomy and precision retreatment.'
-      },
-      {
-        title: 'Hands-On Aesthetic & Composite Dentistry',
-        provider: 'International visiting faculty',
-        location: 'United Kingdom',
-        role: 'Attended',
-        description:
-          'Live hands-on programme in layered anterior composites and contemporary aesthetic restorative protocols.'
-      }
-    ],
-    coursePhotos: [
-      {
-        src: mashalCourses,
-        alt: 'Dr. Mashal Zeb Jan with fellow practitioners at a hands-on dentistry course',
-        caption: 'Hands-on training course'
-      }
-    ],
-    instagramUrl: 'https://www.instagram.com/drmashalzebjan/',
-    whatsappNumber: '+923165944327',
-    phoneNumber: '+923165944327'
-  },
-  {
     id: 'faizan',
     slug: 'dr-faizan-ul-hassan',
     name: 'Dr. Faizan Ul Hassan',
@@ -206,122 +122,94 @@ export const DOCTORS: Doctor[] = [
     instagramUrl: 'https://www.instagram.com/faizanulhassan/',
     whatsappNumber: '+923439591498',
     phoneNumber: '+923165944327'
+  },
+  {
+    id: 'mashal',
+    slug: 'dr-mashal-zeb-jan',
+    name: 'Dr. Mashal Zeb Jan',
+    fullName: 'Dr. Mashal Zeb Jan',
+    title: "Pakistan's Youngest FCPS Specialist in Endodontics & Operative Dentistry",
+    specialties: ['Root Canal Therapy', 'Porcelain Veneers', 'Smile Design', 'Aesthetic Restorations', 'Dental Bonding', 'FCPS (Endodontics and Operative Dentistry)'],
+    bio: 'Expert endodontic and restorative dental care - from a consultant who set the standard before most had even begun.',
+    detailedBio: 'Dr. Mashal Zeb Jan is a specialist in Endodontics and Operative Dentistry, holding the prestigious FCPS qualification awarded by the College of Physicians and Surgeons Pakistan. She is the first resident of Rehman College of Dentistry to clear FCPS Part II, and the youngest consultant in her specialty to pass the examination in Pakistan - clearing it on her first attempt. She brings that same standard of precision and commitment to every patient she treats.',
+    education: [
+      'BDS, FCPS (Endodontics & Operative Dentistry)'
+    ],
+    certs: [
+      'Certified Digital Smile Designer (DSD)',
+      'Advanced Micro-Endodontics Training Certification'
+    ],
+    honors: [
+      'Gold Medal in Restorative & Operative Dentistry',
+      'Best Clinical Case Presentation (CPSP)',
+      'Distinction in Clinical Endodontics'
+    ],
+    languages: ['English', 'Pashto', 'Urdu'],
+    image: drMashal,
+    photos: [
+      {
+        src: drMashal,
+        alt: 'Dr. Mashal Zeb Jan in convocation robes holding her College of Physicians and Surgeons Pakistan scroll',
+        caption: 'FCPS convocation - College of Physicians and Surgeons Pakistan'
+      },
+      {
+        src: mashalMirrorSelfie,
+        alt: 'Dr. Mashal Zeb Jan',
+        caption: 'Outside the clinic'
+      },
+      {
+        src: mashalTraining,
+        alt: 'Dr. Mashal Zeb Jan at an international hands-on cosmetic dentistry course',
+        caption: 'Hands-on training abroad with international faculty'
+      },
+      {
+        src: mashalPediatric,
+        alt: 'Dr. Mashal Zeb Jan speaking with a young patient during a consultation',
+        caption: 'Chairside with a young patient - unhurried, child-friendly care'
+      }
+    ],
+    // Continuing education. The first two entries restate certifications the
+    // clinic already publishes (see `certs` above). The third is inferred from
+    // the training photograph and needs the doctor to confirm the real course
+    // name, faculty and year - or to be removed. Extend with her full CPD record.
+    courses: [
+      {
+        title: 'Digital Smile Design (DSD)',
+        provider: 'Digital Smile Design Academy',
+        role: 'Certified Designer',
+        description:
+          'Photography-led, facially driven smile planning - the workflow behind every veneer and smile makeover case at the clinic.'
+      },
+      {
+        title: 'Advanced Micro-Endodontics',
+        provider: 'Advanced Endodontic Training Programme',
+        role: 'Certified',
+        description:
+          'Root canal therapy: canal location, negotiation of calcified anatomy and precision retreatment.'
+      },
+      {
+        title: 'Hands-On Aesthetic & Composite Dentistry',
+        provider: 'International visiting faculty',
+        location: 'United Kingdom',
+        role: 'Attended',
+        description:
+          'Live hands-on programme in layered anterior composites and contemporary aesthetic restorative protocols.'
+      }
+    ],
+    coursePhotos: [
+      {
+        src: mashalCourses,
+        alt: 'Dr. Mashal Zeb Jan with fellow practitioners at a hands-on dentistry course',
+        caption: 'Hands-on training course'
+      }
+    ],
+    instagramUrl: 'https://www.instagram.com/drmashalzebjan/',
+    whatsappNumber: '+923165944327',
+    phoneNumber: '+923165944327'
   }
 ];
 
 export const SERVICES: Service[] = [
-  // Dr. Mashal's Services
-  {
-    id: 'root-canal-treatment',
-    title: 'Root Canal Treatment',
-    doctor: 'mashal',
-    shortDescription: 'Precise endodontic therapy that saves infected or severely decayed teeth from extraction.',
-    longDescription: 'As an FCPS-qualified specialist in Endodontics, Dr. Mashal performs meticulous root canal therapy to remove infected or inflamed pulp, thoroughly clean and disinfect the root canal system, and seal it to prevent reinfection. Using modern instrumentation, the tooth is preserved in comfort with minimal post-procedure sensitivity.',
-    duration: '1-2 appointments (45-90 minutes each)',
-    priceEstimate: 'Custom consultation required',
-    benefits: [
-      'Saves the natural tooth instead of extraction',
-      'Eliminates pain from infected or inflamed pulp',
-      'High Precision for a thorough clean',
-      'Restores full biting function once the tooth is sealed'
-    ],
-    steps: [
-      'Diagnostic examination and digital x-ray of the affected tooth',
-      'Local anesthesia and isolation of the tooth for a sterile field',
-      'Removal of infected pulp and cleaning/shaping of the root canals',
-      'Sealing of the canal system and final restorative crown or filling'
-    ],
-    iconName: 'Activity'
-  },
-  {
-    id: 'anterior-fillings',
-    title: 'Anterior Fillings',
-    doctor: 'mashal',
-    shortDescription: 'Tooth-colored composite restorations that repair decay, chips, and fractures on front teeth invisibly.',
-    longDescription: 'Front teeth demand both strength and beauty. Dr. Mashal restores decayed, chipped, or fractured anterior teeth using layered nano-composite resin, carefully shade-matched and sculpted to mirror the natural translucency and texture of your own enamel, so the repair disappears into your smile.',
-    duration: '30-60 minutes (single visit)',
-    priceEstimate: 'Accessible premium styling',
-    benefits: [
-      'Seamless, invisible shade-matched repair',
-      'Preserves maximum healthy natural tooth structure',
-      'Completed in a single comfortable visit',
-      'Restores natural edge shape and light reflection'
-    ],
-    steps: [
-      'Shade selection matched precisely to adjacent teeth',
-      'Gentle removal of decay or damaged tooth structure',
-      'Layered composite resin bonding and anatomical sculpting',
-      'Fine polishing for a smooth, natural, glossy finish'
-    ],
-    iconName: 'Sparkles'
-  },
-  {
-    id: 'posterior-fillings',
-    title: 'Posterior Fillings',
-    doctor: 'mashal',
-    shortDescription: 'Durable, high-strength composite restorations for back teeth that withstand everyday chewing forces.',
-    longDescription: 'Molars and premolars carry the heaviest bite load, so Dr. Mashal restores decayed posterior teeth with high-durability composite resin, precisely sculpting natural cusps and occlusal grooves to rebuild full chewing strength while protecting the tooth from further decay.',
-    duration: '30-60 minutes (single visit)',
-    priceEstimate: 'Accessible premium styling',
-    benefits: [
-      'Withstands strong daily biting and chewing forces',
-      'Anatomically sculpted cusps and grooves',
-      'Prevents further decay and future root canal need',
-      'Completed in a single convenient appointment'
-    ],
-    steps: [
-      'Thorough removal of decayed tooth structure',
-      'Conditioning of the cavity surface for durable adhesion',
-      'Layered placement of high-strength posterior composite',
-      'Bite adjustment and final polish for a comfortable fit'
-    ],
-    iconName: 'Layers'
-  },
-  {
-    id: 'scaling-whitening',
-    title: 'Scaling + Teeth Whitening',
-    doctor: 'mashal',
-    shortDescription: 'A thorough professional clean to remove plaque and tartar, followed by rapid laser whitening in the same visit.',
-    longDescription: 'This combined treatment begins with a complete ultrasonic scaling and polish to clear plaque, tartar, and surface stains, leaving a healthy clean base. Dr. Mashal then applies medical-grade Philips Zoom whitening with desensitizing gel to lift years of tea, coffee, and food staining for a dramatically brighter, healthier smile in one appointment.',
-    duration: '60-90 minutes (single visit)',
-    priceEstimate: 'Premium single session package',
-    benefits: [
-      'Removes plaque, tartar and surface staining first',
-      'Lightens teeth by up to 8 shades in the same visit',
-      'Enamel-safe formula with integrated sensitivity blockers',
-      'Leaves gums healthier alongside a brighter smile'
-    ],
-    steps: [
-      'Full ultrasonic scaling and polishing of all tooth surfaces',
-      'Protective barrier application to gums and soft tissues',
-      'Aesthetic whitening gel application activated by targeted laser',
-      'Fluoride treatment to lock in shine and soothe teeth'
-    ],
-    iconName: 'Zap'
-  },
-  {
-    id: 'porcelain-veneers',
-    title: 'Porcelain Veneers',
-    doctor: 'mashal',
-    shortDescription: 'Ultra-thin, handcrafted ceramic shells designed to correct chips, gaps, alignment, and severe discoloration.',
-    longDescription: 'Our premium hand-finished porcelain veneers represent the absolute gold standard in cosmetic dentistry. Using the world\'s finest dental ceramics, Dr. Mashal custom designs each veneer to blend flawlessly with your facial features, natural tooth texture, and translucent skin tone. The result is a luminous, life-changing smile makeover that feels entirely natural.',
-    duration: '2 appointments (over 7-10 days)',
-    priceEstimate: 'Custom consultation required',
-    benefits: [
-      'Perfect color-match and light-reflection',
-      'Incredibly durable and highly stain-resistant',
-      'Fixes alignment, gaps, chips, and shape in one go',
-      'Minimally invasive preparation techniques'
-    ],
-    steps: [
-      'Comprehensive Digital Smile Design (DSD) consultation & photography',
-      'Micro-preparation of enamel and temporary trials',
-      'Bespoke lab fabrication by master ceramists',
-      'Precise, durable bonding & final aesthetic calibration'
-    ],
-    iconName: 'Sparkles'
-  },
-
   // Dr. Faizan's Orthodontic Services
   {
     id: 'fixed-orthodontics',
@@ -432,10 +320,167 @@ export const SERVICES: Service[] = [
       'Bi-weekly tray progression & clinical checkups'
     ],
     iconName: 'Shield'
+  },
+
+  // Dr. Mashal's Services
+  {
+    id: 'root-canal-treatment',
+    title: 'Root Canal Treatment',
+    doctor: 'mashal',
+    shortDescription: 'Precise endodontic therapy that saves infected or severely decayed teeth from extraction.',
+    longDescription: 'As an FCPS-qualified specialist in Endodontics, Dr. Mashal performs meticulous root canal therapy to remove infected or inflamed pulp, thoroughly clean and disinfect the root canal system, and seal it to prevent reinfection. Using modern instrumentation, the tooth is preserved in comfort with minimal post-procedure sensitivity.',
+    duration: '1-2 appointments (45-90 minutes each)',
+    priceEstimate: 'Custom consultation required',
+    benefits: [
+      'Saves the natural tooth instead of extraction',
+      'Eliminates pain from infected or inflamed pulp',
+      'High Precision for a thorough clean',
+      'Restores full biting function once the tooth is sealed'
+    ],
+    steps: [
+      'Diagnostic examination and digital x-ray of the affected tooth',
+      'Local anesthesia and isolation of the tooth for a sterile field',
+      'Removal of infected pulp and cleaning/shaping of the root canals',
+      'Sealing of the canal system and final restorative crown or filling'
+    ],
+    iconName: 'Activity'
+  },
+  {
+    id: 'anterior-fillings',
+    title: 'Anterior Fillings',
+    doctor: 'mashal',
+    shortDescription: 'Tooth-colored composite restorations that repair decay, chips, and fractures on front teeth invisibly.',
+    longDescription: 'Front teeth demand both strength and beauty. Dr. Mashal restores decayed, chipped, or fractured anterior teeth using layered nano-composite resin, carefully shade-matched and sculpted to mirror the natural translucency and texture of your own enamel, so the repair disappears into your smile.',
+    duration: '30-60 minutes (single visit)',
+    priceEstimate: 'Accessible premium styling',
+    benefits: [
+      'Seamless, invisible shade-matched repair',
+      'Preserves maximum healthy natural tooth structure',
+      'Completed in a single comfortable visit',
+      'Restores natural edge shape and light reflection'
+    ],
+    steps: [
+      'Shade selection matched precisely to adjacent teeth',
+      'Gentle removal of decay or damaged tooth structure',
+      'Layered composite resin bonding and anatomical sculpting',
+      'Fine polishing for a smooth, natural, glossy finish'
+    ],
+    iconName: 'Sparkles'
+  },
+  {
+    id: 'posterior-fillings',
+    title: 'Posterior Fillings',
+    doctor: 'mashal',
+    shortDescription: 'Durable, high-strength composite restorations for back teeth that withstand everyday chewing forces.',
+    longDescription: 'Molars and premolars carry the heaviest bite load, so Dr. Mashal restores decayed posterior teeth with high-durability composite resin, precisely sculpting natural cusps and occlusal grooves to rebuild full chewing strength while protecting the tooth from further decay.',
+    duration: '30-60 minutes (single visit)',
+    priceEstimate: 'Accessible premium styling',
+    benefits: [
+      'Withstands strong daily biting and chewing forces',
+      'Anatomically sculpted cusps and grooves',
+      'Prevents further decay and future root canal need',
+      'Completed in a single convenient appointment'
+    ],
+    steps: [
+      'Thorough removal of decayed tooth structure',
+      'Conditioning of the cavity surface for durable adhesion',
+      'Layered placement of high-strength posterior composite',
+      'Bite adjustment and final polish for a comfortable fit'
+    ],
+    iconName: 'Layers'
+  },
+  {
+    id: 'scaling-whitening',
+    title: 'Scaling + Teeth Whitening',
+    doctor: 'mashal',
+    shortDescription: 'A thorough professional clean to remove plaque and tartar, followed by rapid laser whitening in the same visit.',
+    longDescription: 'This combined treatment begins with a complete ultrasonic scaling and polish to clear plaque, tartar, and surface stains, leaving a healthy clean base. Dr. Mashal then applies medical-grade Philips Zoom whitening with desensitizing gel to lift years of tea, coffee, and food staining for a dramatically brighter, healthier smile in one appointment.',
+    duration: '60-90 minutes (single visit)',
+    priceEstimate: 'Premium single session package',
+    benefits: [
+      'Removes plaque, tartar and surface staining first',
+      'Lightens teeth by up to 8 shades in the same visit',
+      'Enamel-safe formula with integrated sensitivity blockers',
+      'Leaves gums healthier alongside a brighter smile'
+    ],
+    steps: [
+      'Full ultrasonic scaling and polishing of all tooth surfaces',
+      'Protective barrier application to gums and soft tissues',
+      'Aesthetic whitening gel application activated by targeted laser',
+      'Fluoride treatment to lock in shine and soothe teeth'
+    ],
+    iconName: 'Zap'
+  },
+  {
+    id: 'porcelain-veneers',
+    title: 'Porcelain Veneers',
+    doctor: 'mashal',
+    shortDescription: 'Ultra-thin, handcrafted ceramic shells designed to correct chips, gaps, alignment, and severe discoloration.',
+    longDescription: 'Our premium hand-finished porcelain veneers represent the absolute gold standard in cosmetic dentistry. Using the world\'s finest dental ceramics, Dr. Mashal custom designs each veneer to blend flawlessly with your facial features, natural tooth texture, and translucent skin tone. The result is a luminous, life-changing smile makeover that feels entirely natural.',
+    duration: '2 appointments (over 7-10 days)',
+    priceEstimate: 'Custom consultation required',
+    benefits: [
+      'Perfect color-match and light-reflection',
+      'Incredibly durable and highly stain-resistant',
+      'Fixes alignment, gaps, chips, and shape in one go',
+      'Minimally invasive preparation techniques'
+    ],
+    steps: [
+      'Comprehensive Digital Smile Design (DSD) consultation & photography',
+      'Micro-preparation of enamel and temporary trials',
+      'Bespoke lab fabrication by master ceramists',
+      'Precise, durable bonding & final aesthetic calibration'
+    ],
+    iconName: 'Sparkles'
   }
 ];
 
 export const CASE_STUDIES: CaseStudy[] = [
+  // Dr. Faizan's Orthodontic Cases
+  // Dr. Faizan's Real Cases
+  {
+    id: 'case-braces-faizan',
+    title: 'Dr. Faizan: Metal Braces Alignment & Smile Correction',
+    doctor: 'faizan',
+    category: 'Orthodontics / Fixed Braces',
+    description: 'Patient presented with overlapping, uneven front teeth and a compromised smile line. Dr. Faizan achieved a complete, natural smile transformation through precision braces treatment.',
+    beforeImage: bracesBefore,
+    afterImage: bracesAfter,
+    isSplitComposite: false,
+    details: [
+      'Full arch alignment and spacing correction',
+      'Improved smile symmetry and bite balance'
+    ]
+  },
+  {
+    id: 'case-gap-faizan',
+    title: 'Dr. Faizan: Midline Gap Closure & Incisor Alignment',
+    doctor: 'faizan',
+    category: 'Orthodontics / Gap Closure',
+    description: 'Prominent midline gap between central incisors and mild crowding resolved with targeted orthodontic treatment for a confident, gap-free smile.',
+    beforeImage: before2,
+    afterImage: after2,
+    isSplitComposite: false,
+    details: [
+      'Closed midline diastema without extractions',
+      'Harmonized smile arc with improved gum contour'
+    ]
+  },
+  {
+    id: 'case-crown-lengthening-faizan',
+    title: 'Dr. Faizan: Esthetic Crown Lengthening — Gummy Smile Correction',
+    doctor: 'faizan',
+    category: 'Periodontal / Esthetic Crown Lengthening',
+    description: 'Patient with excessive gingival display (gummy smile) underwent esthetic crown lengthening to expose a greater proportion of the tooth crowns, producing a balanced, proportionate smile.',
+    beforeImage: estheticCrownLengtheningBefore,
+    afterImage: estheticCrownLengtheningAfter,
+    isSplitComposite: false,
+    details: [
+      'Reduced gingival display for a balanced smile',
+      'Exposed full crown length for proportionate teeth'
+    ]
+  },
+
   // Dr. Mashal's Real Cases
   {
     id: 'case-diastema-mashal',
@@ -544,51 +589,6 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Anatomically sculpted occlusal grooves and cusps',
       'Prevents future decay and root canal necessity'
     ]
-  },
-
-  // Dr. Faizan's Orthodontic Cases
-  // Dr. Faizan's Real Cases
-  {
-    id: 'case-braces-faizan',
-    title: 'Dr. Faizan: Metal Braces Alignment & Smile Correction',
-    doctor: 'faizan',
-    category: 'Orthodontics / Fixed Braces',
-    description: 'Patient presented with overlapping, uneven front teeth and a compromised smile line. Dr. Faizan achieved a complete, natural smile transformation through precision braces treatment.',
-    beforeImage: bracesBefore,
-    afterImage: bracesAfter,
-    isSplitComposite: false,
-    details: [
-      'Full arch alignment and spacing correction',
-      'Improved smile symmetry and bite balance'
-    ]
-  },
-  {
-    id: 'case-gap-faizan',
-    title: 'Dr. Faizan: Midline Gap Closure & Incisor Alignment',
-    doctor: 'faizan',
-    category: 'Orthodontics / Gap Closure',
-    description: 'Prominent midline gap between central incisors and mild crowding resolved with targeted orthodontic treatment for a confident, gap-free smile.',
-    beforeImage: before2,
-    afterImage: after2,
-    isSplitComposite: false,
-    details: [
-      'Closed midline diastema without extractions',
-      'Harmonized smile arc with improved gum contour'
-    ]
-  },
-  {
-    id: 'case-crown-lengthening-faizan',
-    title: 'Dr. Faizan: Esthetic Crown Lengthening — Gummy Smile Correction',
-    doctor: 'faizan',
-    category: 'Periodontal / Esthetic Crown Lengthening',
-    description: 'Patient with excessive gingival display (gummy smile) underwent esthetic crown lengthening to expose a greater proportion of the tooth crowns, producing a balanced, proportionate smile.',
-    beforeImage: estheticCrownLengtheningBefore,
-    afterImage: estheticCrownLengtheningAfter,
-    isSplitComposite: false,
-    details: [
-      'Reduced gingival display for a balanced smile',
-      'Exposed full crown length for proportionate teeth'
-    ]
   }
 ];
 
@@ -632,8 +632,8 @@ export const GOOGLE_REVIEWS: GoogleReview[] = [
 export const FAQS: FAQItem[] = [
   {
     id: 'faq-1',
-    question: 'How do I choose between Dr. Mashal and Dr. Faizan?',
-    answer: 'It depends entirely on your needs! Dr. Mashal Zeb Jan is our specialist in Operative Dentistry, Endodontics, and Aesthetic Smile Design (Porcelain Veneers, Smile Makeovers, Root Canal Therapy). Dr. Faizan Ul Hassan is our Consultant Orthodontist (Conventional Fixed Braces, Invisible Lingual Braces, Clear Aligners, and Cleft Palate Ortho). When you book, you can specify your concerns, and our coordinators will route you to the perfect practitioner.',
+    question: 'How do I choose between Dr. Faizan and Dr. Mashal?',
+    answer: 'It depends entirely on your needs! Dr. Faizan Ul Hassan is our Consultant Orthodontist (Conventional Fixed Braces, Invisible Lingual Braces, Clear Aligners, and Cleft Palate Ortho). Dr. Mashal Zeb Jan is our specialist in Operative Dentistry, Endodontics, and Aesthetic Smile Design (Porcelain Veneers, Smile Makeovers, Root Canal Therapy). When you book, you can specify your concerns, and our coordinators will route you to the perfect practitioner.',
     category: 'general'
   },
   {

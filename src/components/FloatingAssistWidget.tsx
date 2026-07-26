@@ -34,21 +34,21 @@ export default function FloatingAssistWidget({ onOpenBooking }: FloatingAssistWi
 
   const doctors = [
     {
-      id: 'mashal' as const,
-      name: 'Dr. Mashal Zeb Jan',
-      role: 'FCPS Restorative & Aesthetics',
-      whatsapp: 'https://wa.me/923165944327?text=Hello%20Dr.%20Mashal,%20I%20have%20a%20question%20regarding%20The%20Dental%20Experience.',
-      phone: '+92 316 5944327',
-      image: drMashal,
-      badgeColor: 'bg-[#0D9C89]/10 text-[#0D9C89] border-[#0D9C89]/20'
-    },
-    {
       id: 'faizan' as const,
       name: 'Dr. Faizan Ul Hassan',
       role: 'Consultant Orthodontist',
       whatsapp: 'https://wa.me/923439591498?text=Hello%20Dr.%20Faizan,%20I%20have%20a%20question%20regarding%20The%20Dental%20Experience.',
       phone: '+92 343 9591498',
       image: faizan,
+      badgeColor: 'bg-[#0D9C89]/10 text-[#0D9C89] border-[#0D9C89]/20'
+    },
+    {
+      id: 'mashal' as const,
+      name: 'Dr. Mashal Zeb Jan',
+      role: 'FCPS Restorative & Aesthetics',
+      whatsapp: 'https://wa.me/923165944327?text=Hello%20Dr.%20Mashal,%20I%20have%20a%20question%20regarding%20The%20Dental%20Experience.',
+      phone: '+92 316 5944327',
+      image: drMashal,
       badgeColor: 'bg-[#0D9C89]/10 text-[#0D9C89] border-[#0D9C89]/20'
     }
   ];
@@ -161,7 +161,7 @@ export default function FloatingAssistWidget({ onOpenBooking }: FloatingAssistWi
         onClick={() => setIsOpen((prev) => !prev)}
         className="relative p-3.5 sm:p-4 bg-[#22C55E] text-white rounded-full shadow-2xl hover:bg-[#1ebd53] transition-all flex items-center justify-center border border-[#22C55E]/40 cursor-pointer group"
         aria-label="Open contact doctor menu"
-        title="Contact Dr. Mashal or Dr. Faizan"
+        title="Contact Dr. Faizan or Dr. Mashal"
       >
         {isOpen ? (
           <X className="w-6 h-6 text-white" />
@@ -172,7 +172,7 @@ export default function FloatingAssistWidget({ onOpenBooking }: FloatingAssistWi
         {/* Hover Label for desktop */}
         {!isOpen && (
           <span className="absolute right-16 bg-brand-charcoal text-white text-[11px] font-mono px-3 py-1.5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg border border-white/10 pointer-events-none">
-            Contact Dr. Mashal or Dr. Faizan
+            Contact Dr. Faizan or Dr. Mashal
           </span>
         )}
       </button>

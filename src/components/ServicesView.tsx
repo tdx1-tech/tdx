@@ -17,9 +17,9 @@ interface ServicesViewProps {
 }
 
 export default function ServicesView({ onOpenBooking, preSelectedDoctorId = null }: ServicesViewProps) {
-  // Tabs: 'mashal' (Aesthetic) or 'faizan' (Surgical)
+  // Tabs: 'faizan' (Orthodontic) or 'mashal' (Aesthetic)
   const [activeDoctorTab, setActiveDoctorTab] = useState<'mashal' | 'faizan'>(
-    preSelectedDoctorId || 'mashal'
+    preSelectedDoctorId || 'faizan'
   );
 
   // Filter services by doctor
@@ -46,39 +46,6 @@ export default function ServicesView({ onOpenBooking, preSelectedDoctorId = null
 
         {/* Doctor Stream Filter Buttons */}
         <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto pt-8">
-          {/* Dr Mashal Tab */}
-          <motion.button
-            whileHover={{ scale: 1.015, y: -2 }}
-            whileTap={{ scale: 0.985 }}
-            onClick={() => setActiveDoctorTab('mashal')}
-            className={`p-6 rounded-3xl border text-left transition-all flex items-center space-x-4 cursor-pointer relative overflow-hidden ${
-              activeDoctorTab === 'mashal'
-                ? 'bg-brand-sand border-[#0D9C89] text-[#0D9C89] shadow-md ring-2 ring-[#0D9C89]/20'
-                : 'bg-white border-brand-champagne text-brand-charcoal hover:bg-brand-sand/50 shadow-sm hover:border-brand-champagne-dark'
-            }`}
-          >
-              <div className={`relative w-16 h-16 rounded-full overflow-hidden border-2 shrink-0 ${
-              activeDoctorTab === 'mashal' ? 'border-[#0D9C89] shadow-sm' : 'border-brand-champagne'
-            }`}>
-              <img
-                src={drMashal}
-                alt="Dr. Mashal"
-                className="w-full h-full object-cover object-top scale-110"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-            <div className="space-y-1">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-brand-gold font-bold block">Cosmetic Stream</span>
-              <h3 className="font-serif text-lg font-semibold text-brand-charcoal">Dr. Mashal's Services</h3>
-              <span className="text-xs text-gray-500 font-sans block leading-tight">FCPS Specialist, Restorations & Smile Design</span>
-            </div>
-            {activeDoctorTab === 'mashal' && (
-              <div className="absolute top-3 right-3 bg-[#0D9C89] text-white p-1 rounded-full">
-                <Check className="w-3.5 h-3.5" />
-              </div>
-            )}
-          </motion.button>
-
           {/* Dr Faizan Tab */}
           <motion.button
             whileHover={{ scale: 1.015, y: -2 }}
@@ -107,6 +74,39 @@ export default function ServicesView({ onOpenBooking, preSelectedDoctorId = null
               <span className="text-xs text-gray-500 font-sans block leading-tight">Consultant Orthodontist & Department Lead</span>
             </div>
             {activeDoctorTab === 'faizan' && (
+              <div className="absolute top-3 right-3 bg-[#0D9C89] text-white p-1 rounded-full">
+                <Check className="w-3.5 h-3.5" />
+              </div>
+            )}
+          </motion.button>
+
+          {/* Dr Mashal Tab */}
+          <motion.button
+            whileHover={{ scale: 1.015, y: -2 }}
+            whileTap={{ scale: 0.985 }}
+            onClick={() => setActiveDoctorTab('mashal')}
+            className={`p-6 rounded-3xl border text-left transition-all flex items-center space-x-4 cursor-pointer relative overflow-hidden ${
+              activeDoctorTab === 'mashal'
+                ? 'bg-brand-sand border-[#0D9C89] text-[#0D9C89] shadow-md ring-2 ring-[#0D9C89]/20'
+                : 'bg-white border-brand-champagne text-brand-charcoal hover:bg-brand-sand/50 shadow-sm hover:border-brand-champagne-dark'
+            }`}
+          >
+              <div className={`relative w-16 h-16 rounded-full overflow-hidden border-2 shrink-0 ${
+              activeDoctorTab === 'mashal' ? 'border-[#0D9C89] shadow-sm' : 'border-brand-champagne'
+            }`}>
+              <img
+                src={drMashal}
+                alt="Dr. Mashal"
+                className="w-full h-full object-cover object-top scale-110"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <div className="space-y-1">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-brand-gold font-bold block">Cosmetic Stream</span>
+              <h3 className="font-serif text-lg font-semibold text-brand-charcoal">Dr. Mashal's Services</h3>
+              <span className="text-xs text-gray-500 font-sans block leading-tight">FCPS Specialist, Restorations & Smile Design</span>
+            </div>
+            {activeDoctorTab === 'mashal' && (
               <div className="absolute top-3 right-3 bg-[#0D9C89] text-white p-1 rounded-full">
                 <Check className="w-3.5 h-3.5" />
               </div>
