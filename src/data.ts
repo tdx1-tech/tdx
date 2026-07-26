@@ -12,6 +12,7 @@ import toothRestoration from '@/assets/images/Cases/dr-mashal-cases/tooth-restor
 import teethWhitening from '@/assets/images/Cases/dr-mashal-cases/teeth-whitening.jpeg';
 import teethWhiteningBleaching from '@/assets/images/Cases/dr-mashal-cases/teeth-whitening-bleaching.jpeg';
 import toothRestoration2 from '@/assets/images/Cases/dr-mashal-cases/tooth-restoration-2.jpeg';
+import anteriorFilling from '@/assets/images/Cases/dr-mashal-cases/anterior-filling.jpeg';
 
 // Case study images - Dr. Faizan
 import bracesBefore from '@/assets/images/Cases/dr-faizan-cases/braces-before.png';
@@ -211,6 +212,94 @@ export const DOCTORS: Doctor[] = [
 export const SERVICES: Service[] = [
   // Dr. Mashal's Services
   {
+    id: 'root-canal-treatment',
+    title: 'Root Canal Treatment',
+    doctor: 'mashal',
+    shortDescription: 'Precise, microscope-assisted endodontic therapy that saves infected or severely decayed teeth from extraction.',
+    longDescription: 'As an FCPS-qualified specialist in Endodontics, Dr. Mashal performs meticulous root canal therapy to remove infected or inflamed pulp, thoroughly clean and disinfect the root canal system, and seal it to prevent reinfection. Using magnification and modern rotary instrumentation, the tooth is preserved in comfort with minimal post-procedure sensitivity.',
+    duration: '1-2 appointments (45-90 minutes each)',
+    priceEstimate: 'Custom consultation required',
+    benefits: [
+      'Saves the natural tooth instead of extraction',
+      'Eliminates pain from infected or inflamed pulp',
+      'Microscope-assisted precision for a thorough clean',
+      'Restores full biting function once the tooth is sealed'
+    ],
+    steps: [
+      'Diagnostic examination and digital x-ray of the affected tooth',
+      'Local anesthesia and isolation of the tooth for a sterile field',
+      'Removal of infected pulp and cleaning/shaping of the root canals',
+      'Sealing of the canal system and final restorative crown or filling'
+    ],
+    iconName: 'Activity'
+  },
+  {
+    id: 'anterior-fillings',
+    title: 'Anterior Fillings',
+    doctor: 'mashal',
+    shortDescription: 'Tooth-colored composite restorations that repair decay, chips, and fractures on front teeth invisibly.',
+    longDescription: 'Front teeth demand both strength and beauty. Dr. Mashal restores decayed, chipped, or fractured anterior teeth using layered nano-composite resin, carefully shade-matched and sculpted to mirror the natural translucency and texture of your own enamel, so the repair disappears into your smile.',
+    duration: '30-60 minutes (single visit)',
+    priceEstimate: 'Accessible premium styling',
+    benefits: [
+      'Seamless, invisible shade-matched repair',
+      'Preserves maximum healthy natural tooth structure',
+      'Completed in a single comfortable visit',
+      'Restores natural edge shape and light reflection'
+    ],
+    steps: [
+      'Shade selection matched precisely to adjacent teeth',
+      'Gentle removal of decay or damaged tooth structure',
+      'Layered composite resin bonding and anatomical sculpting',
+      'Fine polishing for a smooth, natural, glossy finish'
+    ],
+    iconName: 'Sparkles'
+  },
+  {
+    id: 'posterior-fillings',
+    title: 'Posterior Fillings',
+    doctor: 'mashal',
+    shortDescription: 'Durable, high-strength composite restorations for back teeth that withstand everyday chewing forces.',
+    longDescription: 'Molars and premolars carry the heaviest bite load, so Dr. Mashal restores decayed posterior teeth with high-durability composite resin, precisely sculpting natural cusps and occlusal grooves to rebuild full chewing strength while protecting the tooth from further decay.',
+    duration: '30-60 minutes (single visit)',
+    priceEstimate: 'Accessible premium styling',
+    benefits: [
+      'Withstands strong daily biting and chewing forces',
+      'Anatomically sculpted cusps and grooves',
+      'Prevents further decay and future root canal need',
+      'Completed in a single convenient appointment'
+    ],
+    steps: [
+      'Thorough removal of decayed tooth structure',
+      'Conditioning of the cavity surface for durable adhesion',
+      'Layered placement of high-strength posterior composite',
+      'Bite adjustment and final polish for a comfortable fit'
+    ],
+    iconName: 'Layers'
+  },
+  {
+    id: 'scaling-whitening',
+    title: 'Scaling + Teeth Whitening',
+    doctor: 'mashal',
+    shortDescription: 'A thorough professional clean to remove plaque and tartar, followed by rapid laser whitening in the same visit.',
+    longDescription: 'This combined treatment begins with a complete ultrasonic scaling and polish to clear plaque, tartar, and surface stains, leaving a healthy clean base. Dr. Mashal then applies medical-grade Philips Zoom whitening with desensitizing gel to lift years of tea, coffee, and food staining for a dramatically brighter, healthier smile in one appointment.',
+    duration: '60-90 minutes (single visit)',
+    priceEstimate: 'Premium single session package',
+    benefits: [
+      'Removes plaque, tartar and surface staining first',
+      'Lightens teeth by up to 8 shades in the same visit',
+      'Enamel-safe formula with integrated sensitivity blockers',
+      'Leaves gums healthier alongside a brighter smile'
+    ],
+    steps: [
+      'Full ultrasonic scaling and polishing of all tooth surfaces',
+      'Protective barrier application to gums and soft tissues',
+      'Aesthetic whitening gel application activated by targeted laser',
+      'Fluoride treatment to lock in shine and soothe teeth'
+    ],
+    iconName: 'Zap'
+  },
+  {
     id: 'porcelain-veneers',
     title: 'Porcelain Veneers',
     doctor: 'mashal',
@@ -231,72 +320,6 @@ export const SERVICES: Service[] = [
       'Precise, durable bonding & final aesthetic calibration'
     ],
     iconName: 'Sparkles'
-  },
-  {
-    id: 'smile-makeover',
-    title: 'Signature Smile Makeover',
-    doctor: 'mashal',
-    shortDescription: 'A complete, customized aesthetic transformation combining multiple treatments for a harmonious, radiant look.',
-    longDescription: 'The Dental Experience\'s Signature Smile Makeover is a comprehensive aesthetic rehabilitation. Dr. Mashal combines digital photography, facial-mapping, and a holistic design process to evaluate your gums, lips, and teeth. Whether combining veneers, aesthetic crowns, or subtle contouring, we sculpt a balanced, beautiful, and self-assured appearance.',
-    duration: '2-4 weeks',
-    priceEstimate: 'Bespoke pricing based on design',
-    benefits: [
-      'Engineered to harmonize with your unique facial geometry',
-      'Boosts professional and personal self-confidence',
-      'Resolves structural and cosmetic issues simultaneously',
-      'Includes 3D visual preview before treatment begins'
-    ],
-    steps: [
-      '3D digital mapping and photogrammetry of your facial movements',
-      'Visual mockup creation (try your smile before we touch a tooth)',
-      'Coordinated conservative treatment phase',
-      'Luminous finish and premium protective nightguard fabrication'
-    ],
-    iconName: 'Smile'
-  },
-  {
-    id: 'laser-whitening',
-    title: 'Laser Teeth Whitening',
-    doctor: 'mashal',
-    shortDescription: 'Advanced, rapid zoom laser whitening for dramatic brightness in a single comfortable visit.',
-    longDescription: 'Dull, stained, or aged teeth are revived in under an hour. Using safe, medical-grade Philips Zoom activation systems and Dr. Mashal\'s carefully formulated desensitizing gels, we lift years of tea, coffee, and food stains. This clinic-only procedure is safe for your enamel and delivers immediate, glowing results.',
-    duration: '45-60 minutes',
-    priceEstimate: 'Premium single session package',
-    benefits: [
-      'Lightens teeth by up to 8 shades in one short visit',
-      'Enamel-safe formula with integrated sensitivity blockers',
-      'Long-lasting brilliance with optional home touch-up kits',
-      'Fully supervised by cosmetic dental specialists'
-    ],
-    steps: [
-      'Thorough clinical cleaning and polishing of teeth',
-      'Protective barrier application to gums and soft tissues',
-      'Aesthetic whitening gel application activated by targeted laser',
-      'Fluoride treatment to lock in shine and soothe teeth'
-    ],
-    iconName: 'Zap'
-  },
-  {
-    id: 'composite-bonding',
-    title: 'Cosmetic Composite Bonding',
-    doctor: 'mashal',
-    shortDescription: 'Surgical-free, immediate restoration of minor chips, spacing, and wear in a single appointment.',
-    longDescription: 'For patients looking for swift, spectacular improvements without permanent dental alterations, cosmetic bonding is ideal. Dr. Mashal uses a composite resin layered with artistic precision, mimicking natural dental layers to fill gaps and rebuild broken edges perfectly on the same day.',
-    duration: '1-2 hours (single visit)',
-    priceEstimate: 'Accessible premium styling',
-    benefits: [
-      'Requires zero tooth filing or enamel removal',
-      'Completed entirely in a single convenient visit',
-      'Extremely natural-looking with multi-layered shade matching',
-      'Highly cost-effective cosmetic upgrade'
-    ],
-    steps: [
-      'Color mapping with high-definition custom shade guides',
-      'Conditioning of the tooth surface for durable adhesion',
-      'Artisanal layering and sculpting of premium dental resin',
-      'Polishing to a high-gloss, glass-like finish'
-    ],
-    iconName: 'Layers'
   },
 
   // Dr. Faizan's Orthodontic Services
@@ -429,6 +452,26 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Zero tooth reduction or enamel loss',
       'Completed in a single 45-minute clinical appointment',
       'Natural shade blending matching adjacent teeth'
+    ]
+  },
+  {
+    id: 'case-anterior-filling-mashal',
+    title: 'Dr. Mashal: Anterior Composite Filling',
+    doctor: 'mashal',
+    category: 'Operative Dentistry / Anterior Filling',
+    description: 'Discolored, chipped upper front tooth restored with a tooth-colored composite filling, rebuilding a symmetrical edge and a bright, even shade across both central incisors.',
+    beforeImage: anteriorFilling,
+    afterImage: anteriorFilling,
+    fullImage: anteriorFilling,
+    isSplitComposite: true,
+    // Source photo's "before" half was shot more zoomed-out than the "after"
+    // half; tighten its crop so the teeth land at matching scale/position in the slider.
+    beforeCropY: [0.2, 0.93],
+    details: [
+      'Shade-matched nano-composite restoration',
+      'Rebuilt natural incisal edge and contour',
+      'Zero preparation of the adjacent healthy tooth',
+      'Completed in a single clinical appointment'
     ]
   },
   {

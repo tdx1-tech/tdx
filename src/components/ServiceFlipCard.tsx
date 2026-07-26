@@ -6,7 +6,8 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import {
-  Sparkles, Crown, Sun, Shield, Activity, Cpu, Heart, ChevronRight, Zap, Layers, Grid, EyeOff
+  Sparkles, Sun, Shield, Activity, Cpu, Heart, ChevronRight, Zap, Layers, Grid, EyeOff,
+  Syringe, Droplets
 } from 'lucide-react';
 import { Service } from '../types';
 
@@ -68,7 +69,27 @@ export function ServiceVisualIllustration({ serviceId, index }: { serviceId: str
     );
   }
 
-  if (serviceId === 'smile-makeover') {
+  if (serviceId === 'root-canal-treatment') {
+    return (
+      <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-[#EAF6F4] via-[#F6FBFA] to-[#DDEFEC] p-4 flex items-center justify-center overflow-hidden border border-teal-100 shadow-inner">
+        <div className="absolute inset-0 bg-radial from-[#0D9C89]/20 via-transparent to-transparent opacity-60 pointer-events-none" />
+
+        <motion.div
+          animate={floatAnim}
+          transition={floatTransition}
+          className="relative flex flex-col items-center justify-center space-y-2 z-10"
+        >
+          <div className="relative w-24 h-24 rounded-full bg-white shadow-lg border border-teal-200 flex items-center justify-center">
+            <Syringe className="w-11 h-11 text-[#0D9C89]" />
+            <Activity className="absolute -top-1 -right-1 w-6 h-6 text-brand-gold" />
+          </div>
+          <span className="font-mono text-[10px] uppercase tracking-widest text-[#0D9C89] font-bold">Microscopic Precision</span>
+        </motion.div>
+      </div>
+    );
+  }
+
+  if (serviceId === 'anterior-fillings') {
     return (
       <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-[#FFF8E7] via-[#FDFBF7] to-[#F3EFE0] p-4 flex items-center justify-center overflow-hidden border border-amber-200/50 shadow-inner">
         <div className="absolute inset-0 bg-radial from-brand-gold/20 via-transparent to-transparent opacity-60 pointer-events-none" />
@@ -79,16 +100,33 @@ export function ServiceVisualIllustration({ serviceId, index }: { serviceId: str
           className="relative flex flex-col items-center justify-center space-y-2 z-10"
         >
           <div className="relative w-24 h-24 rounded-full bg-white shadow-lg border border-amber-200 flex items-center justify-center">
-            <Crown className="w-12 h-12 text-brand-gold" />
-            <div className="absolute inset-0 rounded-full border-2 border-dashed border-brand-gold/30 animate-spin-slow" />
+            <Sparkles className="w-11 h-11 text-brand-gold" />
           </div>
-          <span className="font-mono text-[10px] uppercase tracking-widest text-brand-charcoal font-bold">Signature Design</span>
+          <span className="font-mono text-[10px] uppercase tracking-widest text-brand-charcoal font-bold">Invisible Shade Match</span>
         </motion.div>
       </div>
     );
   }
 
-  if (serviceId === 'laser-whitening') {
+  if (serviceId === 'posterior-fillings') {
+    return (
+      <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-[#F5EEF8] via-[#FDFBFD] to-[#EBF3F8] p-4 flex items-center justify-center overflow-hidden border border-purple-100 shadow-inner">
+        <motion.div
+          animate={floatAnim}
+          transition={floatTransition}
+          className="relative flex flex-col items-center justify-center space-y-2 z-10"
+        >
+          <div className="relative w-24 h-24 rounded-full bg-white shadow-lg border border-purple-100 flex items-center justify-center">
+            <Grid className="w-11 h-11 text-purple-600" />
+            <Layers className="absolute -bottom-1 -right-1 w-6 h-6 text-brand-gold" />
+          </div>
+          <span className="font-mono text-[10px] uppercase tracking-widest text-purple-700 font-bold">Rebuilt Bite Strength</span>
+        </motion.div>
+      </div>
+    );
+  }
+
+  if (serviceId === 'scaling-whitening') {
     return (
       <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-[#E6F8F5] via-[#F4FCFA] to-[#D5F2EC] p-4 flex items-center justify-center overflow-hidden border border-teal-100 shadow-inner">
         <div className="absolute inset-0 bg-radial from-[#0D9C89]/20 via-transparent to-transparent opacity-60 pointer-events-none" />
@@ -99,28 +137,10 @@ export function ServiceVisualIllustration({ serviceId, index }: { serviceId: str
           className="relative flex flex-col items-center justify-center space-y-2 z-10"
         >
           <div className="relative w-24 h-24 rounded-full bg-white shadow-lg border border-teal-200 flex items-center justify-center">
-            <Zap className="w-12 h-12 text-[#0D9C89]" />
+            <Droplets className="w-11 h-11 text-[#0D9C89]" />
             <Sun className="absolute -top-2 -right-2 w-7 h-7 text-brand-gold animate-bounce" />
           </div>
-          <span className="font-mono text-[10px] uppercase tracking-widest text-[#0D9C89] font-bold">Laser Zoom Rays</span>
-        </motion.div>
-      </div>
-    );
-  }
-
-  if (serviceId === 'composite-bonding') {
-    return (
-      <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-[#F5EEF8] via-[#FDFBFD] to-[#EBF3F8] p-4 flex items-center justify-center overflow-hidden border border-purple-100 shadow-inner">
-        <motion.div
-          animate={floatAnim}
-          transition={floatTransition}
-          className="relative flex flex-col items-center justify-center space-y-2 z-10"
-        >
-          <div className="relative w-24 h-24 rounded-full bg-white shadow-lg border border-purple-100 flex items-center justify-center">
-            <Layers className="w-12 h-12 text-purple-600" />
-            <Sparkles className="absolute -bottom-1 -right-1 w-6 h-6 text-brand-gold" />
-          </div>
-          <span className="font-mono text-[10px] uppercase tracking-widest text-purple-700 font-bold">Artisanal Layering</span>
+          <span className="font-mono text-[10px] uppercase tracking-widest text-[#0D9C89] font-bold">Clean & Bright Finish</span>
         </motion.div>
       </div>
     );

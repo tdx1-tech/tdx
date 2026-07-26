@@ -6,7 +6,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  ArrowLeft, ArrowRight, Award, BookOpen, GraduationCap, Globe, CheckCircle,
+  ArrowLeft, ArrowRight, Award, BookOpen, GraduationCap, CheckCircle,
   Phone, MessageCircle, Instagram, Maximize2, X, ChevronLeft, ChevronRight, Images,
   Stethoscope, Sparkles
 } from 'lucide-react';
@@ -256,41 +256,17 @@ export default function DoctorProfileView({
           title="Credentials & Clinical Focus"
           description={`The qualifications, certifications and honours behind Dr. ${firstName}'s treatment planning.`}
           icon={Award}
+          indent="pl-6 sm:pl-7"
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <CredentialCard icon={GraduationCap} title="Education & Residencies" items={doctor.education} />
 
           <CredentialCard icon={BookOpen} title="Certifications" items={doctor.certs} />
 
           <CredentialCard icon={Award} title="Honours & Awards" items={doctor.honors} />
 
-          <CredentialCard
-            icon={Stethoscope}
-            title="Clinical Focus Areas"
-            items={doctor.specialties}
-            className="md:col-span-2"
-          />
-
-          {/* Languages read better as chips than as a checklist */}
-          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-gray-100 shadow-lg shadow-gray-100/50 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <span className="w-9 h-9 rounded-full bg-[#0D9C89]/10 flex items-center justify-center shrink-0">
-                <Globe className="w-4 h-4 text-[#0D9C89]" />
-              </span>
-              <h3 className="font-serif text-base font-semibold text-brand-charcoal">Languages Spoken</h3>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {doctor.languages.map((lang) => (
-                <span
-                  key={lang}
-                  className="px-3 py-1.5 rounded-full bg-[#0D9C89]/10 border border-[#0D9C89]/20 text-[#0D9C89] font-mono text-[11px] uppercase tracking-wider font-bold"
-                >
-                  {lang}
-                </span>
-              ))}
-            </div>
-          </div>
+          <CredentialCard icon={Stethoscope} title="Clinical Focus Areas" items={doctor.specialties} />
         </div>
       </section>
 
@@ -305,6 +281,7 @@ export default function DoctorProfileView({
             title="Courses & Training Attended"
             description={`Postgraduate workshops, certifications and hands-on programmes Dr. ${firstName} has taken part in.`}
             icon={Sparkles}
+            indent="pl-6 sm:pl-10"
           />
 
           {/* Course list on the left, training photography alongside it.
@@ -405,6 +382,7 @@ export default function DoctorProfileView({
           title={`Services by Dr. ${firstName}`}
           description="Flip any card to see the clinical protocol, key benefits and to reserve a treatment slot."
           icon={Stethoscope}
+          indent="pl-7"
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -653,17 +631,29 @@ export default function DoctorProfileView({
   );
 }
 
-/** Shared heading block so every section on this page lines up identically. */
+/**
+ * Shared heading block so every section on this page lines up identically.
+ *
+ * The heading sits directly in the section (which only contributes the
+ * page's own gutter), while the cards below it add their own internal
+ * padding on top of that gutter - so their text lands further right than
+ * the heading unless we compensate. `indent` passes that compensation in
+ * (matching whichever card's own padding follows), and is left unset for
+ * sections whose content sits flush with the section edge already (photo
+ * grids, before/after sliders) where no correction is needed.
+ */
 function SectionHeading({
   eyebrow,
   title,
   description,
-  icon: Icon
+  icon: Icon,
+  indent = ''
 }: {
   eyebrow: string;
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
+  indent?: string;
 }) {
   return (
     <motion.div
@@ -671,7 +661,7 @@ function SectionHeading({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.5 }}
-      className="mb-10 space-y-3 max-w-3xl"
+      className={`mb-10 space-y-3 max-w-3xl ${indent}`}
     >
       <span className="font-mono text-xs uppercase tracking-widest text-[#0D9C89] font-bold flex items-center gap-2">
         <Icon className="w-4 h-4" />
