@@ -42,12 +42,12 @@ export const DOCTORS: Doctor[] = [
     slug: 'dr-mashal-zeb-jan',
     name: 'Dr. Mashal Zeb Jan',
     fullName: 'Dr. Mashal Zeb Jan',
-    title: "Pakistan's Youngest FCPS Specialist in Operative Dentistry & Endodontics",
-    specialties: ['Microscopic Root Canal Therapy', 'Porcelain Veneers', 'Smile Design', 'Aesthetic Restorations', 'Dental Bonding', 'FCPS (Operative Dentistry and Endodontics)'],
-    bio: 'Expert root canal and restorative dental care - from a consultant who set the standard before most had even begun.',
-    detailedBio: 'Dr. Mashal Zeb Jan is a specialist in Operative Dentistry and Endodontics, holding the prestigious FCPS qualification awarded by the College of Physicians and Surgeons Pakistan. She is the first resident of Rehman College of Dentistry to clear FCPS Part II, and the youngest consultant in her specialty to pass the examination in Pakistan - clearing it on her first attempt. She brings that same standard of precision and commitment to every patient she treats.',
+    title: "Pakistan's Youngest FCPS Specialist in Endodontics & Operative Dentistry",
+    specialties: ['Root Canal Therapy', 'Porcelain Veneers', 'Smile Design', 'Aesthetic Restorations', 'Dental Bonding', 'FCPS (Endodontics and Operative Dentistry)'],
+    bio: 'Expert endodontic and restorative dental care - from a consultant who set the standard before most had even begun.',
+    detailedBio: 'Dr. Mashal Zeb Jan is a specialist in Endodontics and Operative Dentistry, holding the prestigious FCPS qualification awarded by the College of Physicians and Surgeons Pakistan. She is the first resident of Rehman College of Dentistry to clear FCPS Part II, and the youngest consultant in her specialty to pass the examination in Pakistan - clearing it on her first attempt. She brings that same standard of precision and commitment to every patient she treats.',
     education: [
-      'BDS, FCPS (Operative Dentistry & Endodontics)'
+      'BDS, FCPS (Endodontics & Operative Dentistry)'
     ],
     certs: [
       'Certified Digital Smile Designer (DSD)',
@@ -99,7 +99,7 @@ export const DOCTORS: Doctor[] = [
         provider: 'Advanced Endodontic Training Programme',
         role: 'Certified',
         description:
-          'Magnification-assisted root canal therapy: canal location, negotiation of calcified anatomy and microscope-guided retreatment.'
+          'Root canal therapy: canal location, negotiation of calcified anatomy and precision retreatment.'
       },
       {
         title: 'Hands-On Aesthetic & Composite Dentistry',
@@ -215,14 +215,14 @@ export const SERVICES: Service[] = [
     id: 'root-canal-treatment',
     title: 'Root Canal Treatment',
     doctor: 'mashal',
-    shortDescription: 'Precise, microscope-assisted endodontic therapy that saves infected or severely decayed teeth from extraction.',
-    longDescription: 'As an FCPS-qualified specialist in Endodontics, Dr. Mashal performs meticulous root canal therapy to remove infected or inflamed pulp, thoroughly clean and disinfect the root canal system, and seal it to prevent reinfection. Using magnification and modern rotary instrumentation, the tooth is preserved in comfort with minimal post-procedure sensitivity.',
+    shortDescription: 'Precise endodontic therapy that saves infected or severely decayed teeth from extraction.',
+    longDescription: 'As an FCPS-qualified specialist in Endodontics, Dr. Mashal performs meticulous root canal therapy to remove infected or inflamed pulp, thoroughly clean and disinfect the root canal system, and seal it to prevent reinfection. Using modern instrumentation, the tooth is preserved in comfort with minimal post-procedure sensitivity.',
     duration: '1-2 appointments (45-90 minutes each)',
     priceEstimate: 'Custom consultation required',
     benefits: [
       'Saves the natural tooth instead of extraction',
       'Eliminates pain from infected or inflamed pulp',
-      'Microscope-assisted precision for a thorough clean',
+      'High Precision for a thorough clean',
       'Restores full biting function once the tooth is sealed'
     ],
     steps: [
@@ -633,7 +633,7 @@ export const FAQS: FAQItem[] = [
   {
     id: 'faq-1',
     question: 'How do I choose between Dr. Mashal and Dr. Faizan?',
-    answer: 'It depends entirely on your needs! Dr. Mashal Zeb Jan is our specialist in Operative Dentistry, Endodontics, and Aesthetic Smile Design (Porcelain Veneers, Smile Makeovers, Microscopic Root Canals). Dr. Faizan Ul Hassan is our Consultant Orthodontist (Conventional Fixed Braces, Invisible Lingual Braces, Clear Aligners, and Cleft Palate Ortho). When you book, you can specify your concerns, and our coordinators will route you to the perfect practitioner.',
+    answer: 'It depends entirely on your needs! Dr. Mashal Zeb Jan is our specialist in Operative Dentistry, Endodontics, and Aesthetic Smile Design (Porcelain Veneers, Smile Makeovers, Root Canal Therapy). Dr. Faizan Ul Hassan is our Consultant Orthodontist (Conventional Fixed Braces, Invisible Lingual Braces, Clear Aligners, and Cleft Palate Ortho). When you book, you can specify your concerns, and our coordinators will route you to the perfect practitioner.',
     category: 'general'
   },
   {

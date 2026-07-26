@@ -83,7 +83,7 @@ export function ServiceVisualIllustration({ serviceId, index }: { serviceId: str
             <Syringe className="w-11 h-11 text-[#0D9C89]" />
             <Activity className="absolute -top-1 -right-1 w-6 h-6 text-brand-gold" />
           </div>
-          <span className="font-mono text-[10px] uppercase tracking-widest text-[#0D9C89] font-bold">Microscopic Precision</span>
+          <span className="font-mono text-[10px] uppercase tracking-widest text-[#0D9C89] font-bold">Done with Precision</span>
         </motion.div>
       </div>
     );
@@ -287,12 +287,12 @@ export default function ServiceFlipCard({
             </h3>
 
             {/* Short Description */}
-            <p className="text-xs sm:text-sm text-gray-500 font-sans leading-relaxed line-clamp-2">
+            <p className="text-xs sm:text-sm text-gray-500 font-sans leading-relaxed line-clamp-3">
               {service.shortDescription}
             </p>
 
             {/* Inner Media Card Container with Animated Moving Graphic */}
-            <div className="w-full h-52 my-3 relative">
+            <div className="w-full h-44 my-3 relative">
               <ServiceVisualIllustration serviceId={service.id} index={index} />
             </div>
           </div>
