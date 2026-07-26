@@ -77,6 +77,12 @@ export interface CaseStudy {
   /** Extra vertical crop (fractions 0-1 of that half's height) to correct a before/after zoom mismatch in the source composite photo. */
   beforeCropY?: [number, number];
   afterCropY?: [number, number];
+  /**
+   * Width/height of the comparison viewport, matched to the case's own photos so
+   * they fill it without cropping. Defaults to 4/3, which suits the close-up
+   * intraoral shots; the full-face orthodontic cases are portrait.
+   */
+  aspectRatio?: number;
   details: string[];
 }
 

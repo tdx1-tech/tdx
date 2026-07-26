@@ -36,9 +36,9 @@ const DOCTOR_HIGHLIGHTS: Record<DoctorType, { value: string; label: string }[]> 
     { value: 'Youngest', label: 'Consultant in her specialty in Pakistan' }
   ],
   faizan: [
-    { value: '550+', label: 'Patients personally treated with fixed braces' },
-    { value: '6', label: 'National postgraduate workshops facilitated' },
-    { value: '11', label: 'Published research articles' }
+    { value: '1300+', label: 'Cases treated over 15 years' },
+    { value: '17', label: 'Workshops and courses facilitated' },
+    { value: '21', label: 'Published research articles' }
   ]
 };
 

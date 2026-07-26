@@ -457,7 +457,7 @@ export default function HomeView({ onOpenBooking, setActiveTab, onViewDoctorProf
             const eyebrow = isMashal ? "MEET YOUR COSMETIC & OPERATIVE SPECIALIST" : "MEET YOUR CONSULTANT ORTHODONTIST";
             const fullBio = isMashal
               ? "Dr. Mashal Zeb Jan is a specialist in Operative Dentistry and Endodontics, holding the prestigious FCPS qualification awarded by the College of Physicians and Surgeons Pakistan. She is the first resident of Rehman College of Dentistry to clear FCPS Part II, and the youngest consultant in her specialty to pass the examination in Pakistan - clearing it on her first attempt. She brings that same standard of precision and commitment to every patient she treats."
-              : "Dr. Faizan Ul Hassan is a Consultant Orthodontist and FCPS Fellow leading advanced dentofacial orthopedics and surgical alignment protocols. Having personally treated over 550+ complex orthodontic cases, he serves as a Principal Facilitator for National Postgraduate Workshops at CPSP and directs comprehensive smile straightening with microscopic precision.";
+              : "Dr. Faizan Ul Hassan is a Consultant Orthodontist and FCPS Fellow leading advanced dentofacial orthopedics and surgical alignment protocols. Having personally treated more than 1,300 orthodontic cases over 15 years, he serves as a Principal Facilitator for National Postgraduate Workshops at CPSP and directs comprehensive smile straightening with microscopic precision.";
 
             return (
               <motion.div

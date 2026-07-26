@@ -14,13 +14,47 @@ import teethWhiteningBleaching from '@/assets/images/Cases/dr-mashal-cases/teeth
 import toothRestoration2 from '@/assets/images/Cases/dr-mashal-cases/tooth-restoration-2.jpeg';
 import anteriorFilling from '@/assets/images/Cases/dr-mashal-cases/anterior-filling.jpeg';
 
-// Case study images - Dr. Faizan
-import bracesBefore from '@/assets/images/Cases/dr-faizan-cases/braces-before.png';
-import bracesAfter from '@/assets/images/Cases/dr-faizan-cases/braces-after.png';
-import before2 from '@/assets/images/Cases/dr-faizan-cases/before-2.png';
-import after2 from '@/assets/images/Cases/dr-faizan-cases/after-2.png';
-import estheticCrownLengtheningBefore from '@/assets/images/Cases/dr-faizan-cases/esthetic-crown-lengthening-before.png';
-import estheticCrownLengtheningAfter from '@/assets/images/Cases/dr-faizan-cases/esthetic-crown-lengthening-after.png';
+// Case study images - Dr. Faizan.
+// Each case ships as three files: the before and after halves, already split out
+// of the clinic's side-by-side photo and padded to identical dimensions so the
+// comparison slider lines up, plus the intact side-by-side view behind the
+// "Full Split Photo" toggle.
+import crowdingRotationBefore from '@/assets/images/Cases/dr-faizan-cases/braces-severe-crowding-rotation-before.webp';
+import crowdingRotationAfter from '@/assets/images/Cases/dr-faizan-cases/braces-severe-crowding-rotation-after.webp';
+import crowdingRotationFull from '@/assets/images/Cases/dr-faizan-cases/braces-severe-crowding-rotation-full.webp';
+import proclinationBefore from '@/assets/images/Cases/dr-faizan-cases/braces-proclination-correction-before.webp';
+import proclinationAfter from '@/assets/images/Cases/dr-faizan-cases/braces-proclination-correction-after.webp';
+import proclinationFull from '@/assets/images/Cases/dr-faizan-cases/braces-proclination-correction-full.webp';
+import proclinationSpacingBefore from '@/assets/images/Cases/dr-faizan-cases/braces-proclination-spacing-adult-before.webp';
+import proclinationSpacingAfter from '@/assets/images/Cases/dr-faizan-cases/braces-proclination-spacing-adult-after.webp';
+import proclinationSpacingFull from '@/assets/images/Cases/dr-faizan-cases/braces-proclination-spacing-adult-full.webp';
+import crowdingRotationTwoBefore from '@/assets/images/Cases/dr-faizan-cases/braces-crowding-rotation-before.webp';
+import crowdingRotationTwoAfter from '@/assets/images/Cases/dr-faizan-cases/braces-crowding-rotation-after.webp';
+import crowdingRotationTwoFull from '@/assets/images/Cases/dr-faizan-cases/braces-crowding-rotation-full.webp';
+import smileRehabBefore from '@/assets/images/Cases/dr-faizan-cases/braces-crowding-smile-rehab-before.webp';
+import smileRehabAfter from '@/assets/images/Cases/dr-faizan-cases/braces-crowding-smile-rehab-after.webp';
+import smileRehabFull from '@/assets/images/Cases/dr-faizan-cases/braces-crowding-smile-rehab-full.webp';
+import smileLineBefore from '@/assets/images/Cases/dr-faizan-cases/braces-anterior-crowding-smile-line-before.webp';
+import smileLineAfter from '@/assets/images/Cases/dr-faizan-cases/braces-anterior-crowding-smile-line-after.webp';
+import smileLineFull from '@/assets/images/Cases/dr-faizan-cases/braces-anterior-crowding-smile-line-full.webp';
+import rotatedIncisorsBefore from '@/assets/images/Cases/dr-faizan-cases/braces-rotated-incisors-before.webp';
+import rotatedIncisorsAfter from '@/assets/images/Cases/dr-faizan-cases/braces-rotated-incisors-after.webp';
+import rotatedIncisorsFull from '@/assets/images/Cases/dr-faizan-cases/braces-rotated-incisors-full.webp';
+import smileBroadeningBefore from '@/assets/images/Cases/dr-faizan-cases/braces-crowding-smile-broadening-before.webp';
+import smileBroadeningAfter from '@/assets/images/Cases/dr-faizan-cases/braces-crowding-smile-broadening-after.webp';
+import smileBroadeningFull from '@/assets/images/Cases/dr-faizan-cases/braces-crowding-smile-broadening-full.webp';
+import upperArchBefore from '@/assets/images/Cases/dr-faizan-cases/braces-upper-arch-alignment-before.webp';
+import upperArchAfter from '@/assets/images/Cases/dr-faizan-cases/braces-upper-arch-alignment-after.webp';
+import upperArchFull from '@/assets/images/Cases/dr-faizan-cases/braces-upper-arch-alignment-full.webp';
+import protrusionSmileBefore from '@/assets/images/Cases/dr-faizan-cases/braces-protrusion-smile-before.webp';
+import protrusionSmileAfter from '@/assets/images/Cases/dr-faizan-cases/braces-protrusion-smile-after.webp';
+import protrusionSmileFull from '@/assets/images/Cases/dr-faizan-cases/braces-protrusion-smile-full.webp';
+import anteriorAlignmentBefore from '@/assets/images/Cases/dr-faizan-cases/braces-anterior-alignment-before.webp';
+import anteriorAlignmentAfter from '@/assets/images/Cases/dr-faizan-cases/braces-anterior-alignment-after.webp';
+import anteriorAlignmentFull from '@/assets/images/Cases/dr-faizan-cases/braces-anterior-alignment-full.webp';
+import debondBefore from '@/assets/images/Cases/dr-faizan-cases/braces-debond-full-arch-before.webp';
+import debondAfter from '@/assets/images/Cases/dr-faizan-cases/braces-debond-full-arch-after.webp';
+import debondFull from '@/assets/images/Cases/dr-faizan-cases/braces-debond-full-arch-full.webp';
 
 // Doctor profile images
 import drMashal from '@/assets/images/dr-mashal.webp';
@@ -44,8 +78,8 @@ export const DOCTORS: Doctor[] = [
     fullName: 'Dr. Faizan Ul Hassan',
     title: 'Consultant Orthodontist & Department Lead',
     specialties: ['Conventional Fixed Orthodontics', 'Lingual Orthodontics', 'Cleft Lip and Palate Intervention', 'Surgical and Accelerated Orthodontics', 'Smile Makeovers', 'BDS, FCPS (Orthodontics)'],
-    bio: 'Dr. Faizan is a dedicated orthodontist and educator who has personally treated over 550 patients with fixed braces and supervised thousands of treatments. He specializes in advanced fixed, lingual, and surgical alignments.',
-    detailedBio: 'Dr. Faizan ul Hassan is a dedicated and accomplished orthodontist at the RCD\'s Department of Orthodontics. He graduated from Khyber College of Dentistry (KCD) in 2013 and pursued his passion for orthodontics, completing his fellowship and clearing FCPS part 2 in 2018, becoming one of the youngest fellows in the field.\n\nDr. Hassan has personally treated over 550 patients with fixed braces and supervised the treatment of thousands under the care of postgraduate residents. As an educator, he has conducted four national workshops for postgraduate orthodontic residents as the Principal Facilitator and two as an Associate Facilitator. His research expertise is evident in his publication record, with 11 articles covering a range of topics.\n\nDr. Hassan teaches final-year orthodontics, sharing his expertise and inspiring the next generation of dental professionals. His commitment to excellence in clinical practice, education, and research makes him a valuable asset to our institution.',
+    bio: 'Dr. Faizan is a dedicated orthodontist and educator who has treated more than 1,300 cases over 15 years and supervised thousands of treatments. He specializes in advanced fixed, lingual, and surgical alignments.',
+    detailedBio: 'Dr. Faizan ul Hassan is a dedicated and accomplished orthodontist at the RCD\'s Department of Orthodontics. He graduated from Khyber College of Dentistry (KCD) in 2013 and pursued his passion for orthodontics, completing his fellowship and clearing FCPS part 2 in 2018, becoming one of the youngest fellows in the field.\n\nDr. Hassan has personally treated more than 1,300 cases over 15 years and supervised the treatment of thousands more under the care of postgraduate residents. As an educator, he has facilitated 17 workshops and courses for postgraduate orthodontic residents. His research expertise is evident in his publication record, with 21 articles covering a range of topics.\n\nDr. Hassan teaches final-year orthodontics, sharing his expertise and inspiring the next generation of dental professionals. His commitment to excellence in clinical practice, education, and research makes him a valuable asset to our institution.',
     education: [
       'BDS - Khyber College of Dentistry (2013)',
       'FCPS - Orthodontics (CPSP Fellowship, 2018)'
@@ -78,22 +112,16 @@ export const DOCTORS: Doctor[] = [
         caption: 'Professional development travel - Edinburgh, Scotland'
       }
     ],
-    // Workshops below are the ones already documented in Dr. Faizan's biography
-    // (four as Principal Facilitator, two as Associate Facilitator).
+    // The clinic reports 17 workshops and courses facilitated in total; the
+    // split between Principal and Associate Facilitator roles is not on file,
+    // so they are listed here as a single combined entry.
     courses: [
       {
-        title: 'National Postgraduate Orthodontic Workshop',
+        title: 'National Postgraduate Orthodontic Workshops & Courses',
         provider: 'College of Physicians and Surgeons Pakistan (CPSP)',
-        role: 'Principal Facilitator - 4 workshops',
+        role: 'Facilitator - 17 workshops & courses',
         description:
-          'Designed and led four national workshops training postgraduate orthodontic residents from across Pakistan.'
-      },
-      {
-        title: 'National Postgraduate Orthodontic Workshop',
-        provider: 'College of Physicians and Surgeons Pakistan (CPSP)',
-        role: 'Associate Facilitator - 2 workshops',
-        description:
-          'Supporting faculty on two further national residency training workshops.'
+          'Designed and led national workshops and courses training postgraduate orthodontic residents from across Pakistan, as both Principal and Associate Facilitator.'
       },
       {
         title: 'Lingual Orthodontics',
@@ -437,47 +465,208 @@ export const SERVICES: Service[] = [
 
 export const CASE_STUDIES: CaseStudy[] = [
   // Dr. Faizan's Orthodontic Cases
-  // Dr. Faizan's Real Cases
   {
-    id: 'case-braces-faizan',
-    title: 'Dr. Faizan: Metal Braces Alignment & Smile Correction',
+    id: 'case-crowding-rotation-faizan',
+    title: 'Dr. Faizan: Severe Anterior Crowding & Rotation Correction',
     doctor: 'faizan',
     category: 'Orthodontics / Fixed Braces',
-    description: 'Patient presented with overlapping, uneven front teeth and a compromised smile line. Dr. Faizan achieved a complete, natural smile transformation through precision braces treatment.',
-    beforeImage: bracesBefore,
-    afterImage: bracesAfter,
-    isSplitComposite: false,
+    description: 'Patient presented with severely crowded and rotated upper front teeth, an irregular smile line and heavily overlapped incisors. Fixed braces produced a fully aligned, even anterior segment.',
+    beforeImage: crowdingRotationBefore,
+    afterImage: crowdingRotationAfter,
+    fullImage: crowdingRotationFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1279,
     details: [
-      'Full arch alignment and spacing correction',
-      'Improved smile symmetry and bite balance'
+      'Derotation and alignment of the upper anterior teeth',
+      'Overlapping incisors brought into a level arch',
+      'Restored a continuous, even smile line'
     ]
   },
   {
-    id: 'case-gap-faizan',
-    title: 'Dr. Faizan: Midline Gap Closure & Incisor Alignment',
+    id: 'case-proclination-faizan',
+    title: 'Dr. Faizan: Protruding Upper Front Teeth Corrected',
     doctor: 'faizan',
-    category: 'Orthodontics / Gap Closure',
-    description: 'Prominent midline gap between central incisors and mild crowding resolved with targeted orthodontic treatment for a confident, gap-free smile.',
-    beforeImage: before2,
-    afterImage: after2,
-    isSplitComposite: false,
+    category: 'Orthodontics / Proclination Correction',
+    description: 'Markedly forward-flared upper front teeth that prevented comfortable lip closure. Fixed braces retracted and aligned the anterior segment, shown here both at rest and smiling.',
+    beforeImage: proclinationBefore,
+    afterImage: proclinationAfter,
+    fullImage: proclinationFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1515,
     details: [
-      'Closed midline diastema without extractions',
-      'Harmonized smile arc with improved gum contour'
+      'Retraction of severely proclined upper incisors',
+      'Comfortable, natural lip closure at rest',
+      'Documented in both repose and smiling views'
     ]
   },
   {
-    id: 'case-crown-lengthening-faizan',
-    title: 'Dr. Faizan: Esthetic Crown Lengthening — Gummy Smile Correction',
+    id: 'case-proclination-spacing-faizan',
+    title: 'Dr. Faizan: Adult Treatment — Flared & Spaced Upper Teeth',
     doctor: 'faizan',
-    category: 'Periodontal / Esthetic Crown Lengthening',
-    description: 'Patient with excessive gingival display (gummy smile) underwent esthetic crown lengthening to expose a greater proportion of the tooth crowns, producing a balanced, proportionate smile.',
-    beforeImage: estheticCrownLengtheningBefore,
-    afterImage: estheticCrownLengtheningAfter,
-    isSplitComposite: false,
+    category: 'Orthodontics / Spacing & Proclination',
+    description: 'Adult patient with pronounced forward-flared upper front teeth and visible spacing between them. Fixed orthodontic treatment closed the spaces and brought the anterior teeth back into a balanced position.',
+    beforeImage: proclinationSpacingBefore,
+    afterImage: proclinationSpacingAfter,
+    fullImage: proclinationSpacingFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1515,
     details: [
-      'Reduced gingival display for a balanced smile',
-      'Exposed full crown length for proportionate teeth'
+      'Closure of spacing across the upper anterior teeth',
+      'Correction of pronounced incisor flaring',
+      'Adult orthodontics with fixed appliances'
+    ]
+  },
+  {
+    id: 'case-crowding-rotation-2-faizan',
+    title: 'Dr. Faizan: Crowding & Rotation — Full Smile Alignment',
+    doctor: 'faizan',
+    category: 'Orthodontics / Crowding Correction',
+    description: 'Crowded, rotated and irregularly positioned upper front teeth resolved with fixed braces, producing a level, symmetrical smile with evenly displayed anterior teeth.',
+    beforeImage: crowdingRotationTwoBefore,
+    afterImage: crowdingRotationTwoAfter,
+    fullImage: crowdingRotationTwoFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1317,
+    details: [
+      'Relief of upper anterior crowding',
+      'Derotation of individually displaced teeth',
+      'Even, symmetrical smile display'
+    ]
+  },
+  {
+    id: 'case-smile-rehab-faizan',
+    title: 'Dr. Faizan: Crowding Correction & Smile Rehabilitation',
+    doctor: 'faizan',
+    category: 'Orthodontics / Smile Alignment',
+    description: 'Irregular, overlapping upper front teeth with an uneven incisal edge line. Orthodontic alignment produced a level, uniform smile with the anterior teeth restored to an even display.',
+    beforeImage: smileRehabBefore,
+    afterImage: smileRehabAfter,
+    fullImage: smileRehabFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1416,
+    details: [
+      'Alignment of overlapping upper anterior teeth',
+      'Levelled incisal edge line across the smile',
+      'Improved smile symmetry'
+    ]
+  },
+  {
+    id: 'case-smile-line-faizan',
+    title: 'Dr. Faizan: Anterior Crowding & Smile Line Correction',
+    doctor: 'faizan',
+    category: 'Orthodontics / Fixed Braces',
+    description: 'Crowded upper anterior teeth with an irregular smile line and restricted tooth display. Fixed braces produced a broader, evenly aligned smile with a harmonious arc.',
+    beforeImage: smileLineBefore,
+    afterImage: smileLineAfter,
+    fullImage: smileLineFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1373,
+    details: [
+      'Relief of anterior crowding',
+      'Harmonized smile arc and tooth display',
+      'Balanced upper and lower midlines'
+    ]
+  },
+  {
+    id: 'case-rotated-incisors-faizan',
+    title: 'Dr. Faizan: Rotated Incisor Correction & Smile Symmetry',
+    doctor: 'faizan',
+    category: 'Orthodontics / Crowding Correction',
+    description: 'Rotated and overlapping incisors with uneven edges corrected through fixed orthodontic treatment, delivering a symmetrical, evenly aligned anterior segment.',
+    beforeImage: rotatedIncisorsBefore,
+    afterImage: rotatedIncisorsAfter,
+    fullImage: rotatedIncisorsFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1515,
+    details: [
+      'Derotation of individually rotated incisors',
+      'Levelled and evened incisal edges',
+      'Symmetrical anterior alignment'
+    ]
+  },
+  {
+    id: 'case-smile-broadening-faizan',
+    title: 'Dr. Faizan: Crowding Correction & Smile Broadening',
+    doctor: 'faizan',
+    category: 'Orthodontics / Smile Alignment',
+    description: 'A narrow smile with crowded, barely visible upper teeth opened into a broad, confident smile with a fully aligned and evenly displayed anterior segment.',
+    beforeImage: smileBroadeningBefore,
+    afterImage: smileBroadeningAfter,
+    fullImage: smileBroadeningFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1515,
+    details: [
+      'Relief of upper anterior crowding',
+      'Noticeably broader smile display',
+      'Even, aligned anterior teeth'
+    ]
+  },
+  {
+    id: 'case-upper-arch-faizan',
+    title: 'Dr. Faizan: Upper Arch Alignment & Smile Refinement',
+    doctor: 'faizan',
+    category: 'Orthodontics / Fixed Braces',
+    description: 'Irregular, unevenly positioned upper anterior teeth aligned with fixed braces, refining both the smile line and the overall balance of the upper arch.',
+    beforeImage: upperArchBefore,
+    afterImage: upperArchAfter,
+    fullImage: upperArchFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1515,
+    details: [
+      'Full upper arch levelling and alignment',
+      'Refined smile line and tooth proportions',
+      'Improved anterior symmetry'
+    ]
+  },
+  {
+    id: 'case-protrusion-smile-faizan',
+    title: 'Dr. Faizan: Forward-Positioned Front Teeth Retracted',
+    doctor: 'faizan',
+    category: 'Orthodontics / Proclination Correction',
+    description: 'Forward-positioned, crowded upper and lower front teeth retracted and aligned with fixed braces, producing a fuller and more even smile.',
+    beforeImage: protrusionSmileBefore,
+    afterImage: protrusionSmileAfter,
+    fullImage: protrusionSmileFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1515,
+    details: [
+      'Retraction of forward-positioned anterior teeth',
+      'Relief of crowding in both arches',
+      'Fuller, more even smile display'
+    ]
+  },
+  {
+    id: 'case-anterior-alignment-faizan',
+    title: 'Dr. Faizan: Anterior Alignment & Smile Harmonization',
+    doctor: 'faizan',
+    category: 'Orthodontics / Smile Alignment',
+    description: 'Crowded and irregularly aligned front teeth brought into an even, harmonious arrangement with fixed orthodontic treatment.',
+    beforeImage: anteriorAlignmentBefore,
+    afterImage: anteriorAlignmentAfter,
+    fullImage: anteriorAlignmentFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1446,
+    details: [
+      'Alignment of crowded anterior teeth',
+      'Harmonized smile line',
+      'Even anterior tooth display'
+    ]
+  },
+  {
+    id: 'case-debond-faizan',
+    title: 'Dr. Faizan: Fixed Braces — Active Treatment to Debond',
+    doctor: 'faizan',
+    category: 'Orthodontics / Treatment Completion',
+    description: 'Documented from active treatment with fixed braces in place through to debonding, revealing the finished alignment of the upper and lower arches.',
+    beforeImage: debondBefore,
+    afterImage: debondAfter,
+    fullImage: debondFull,
+    isSplitComposite: true,
+    aspectRatio: 1000 / 1515,
+    details: [
+      'Full-arch levelling and alignment with fixed appliances',
+      'Finished result shown immediately after debonding',
+      'Even, well-aligned anterior display'
     ]
   },
 

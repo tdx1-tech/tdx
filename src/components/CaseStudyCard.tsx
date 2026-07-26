@@ -39,8 +39,14 @@ export default function CaseStudyCard({ study, showDoctorName = true }: CaseStud
     return () => window.removeEventListener('resize', updateWidth);
   }, []);
 
+  // Some composites ship as a single photo that has to be sliced in the browser;
+  // others are already split into separate before/after files at build time and
+  // only keep fullImage around for the "Full Split Photo" toggle.
+  const needsRuntimeSplit =
+    !!study.isSplitComposite && !!study.fullImage && study.beforeImage === study.fullImage;
+
   useEffect(() => {
-    if (study.isSplitComposite && study.fullImage) {
+    if (needsRuntimeSplit && study.fullImage) {
       splitCompositeImage(study.fullImage, {
         beforeCropY: study.beforeCropY,
         afterCropY: study.afterCropY,
@@ -50,7 +56,7 @@ export default function CaseStudyCard({ study, showDoctorName = true }: CaseStud
     } else {
       setSplitResult(null);
     }
-  }, [study.id, study.fullImage, study.isSplitComposite, study.beforeCropY, study.afterCropY]);
+  }, [study.id, study.fullImage, needsRuntimeSplit, study.beforeCropY, study.afterCropY]);
 
   const handleMove = (clientX: number) => {
     if (!containerRef.current) return;
@@ -88,7 +94,8 @@ export default function CaseStudyCard({ study, showDoctorName = true }: CaseStud
           onMouseDown={!showFullPhoto ? () => setIsDragging(true) : undefined}
           onMouseUp={!showFullPhoto ? () => setIsDragging(false) : undefined}
           onMouseLeave={!showFullPhoto ? () => setIsDragging(false) : undefined}
-          className={`relative w-full aspect-[4/3] rounded-[28px] overflow-hidden border border-brand-champagne shadow-md select-none ${isSplit ? 'bg-[#F8F9FA]' : 'bg-black'} ${!showFullPhoto ? 'cursor-ew-resize' : ''}`}
+          style={{ aspectRatio: study.aspectRatio ?? 4 / 3 }}
+          className={`relative w-full rounded-[28px] overflow-hidden border border-brand-champagne shadow-md select-none ${isSplit ? 'bg-[#F8F9FA]' : 'bg-black'} ${!showFullPhoto ? 'cursor-ew-resize' : ''}`}
         >
           {showFullPhoto ? (
             /* FULL UNTOUCHED ORIGINAL COMPOSITE PHOTO */
