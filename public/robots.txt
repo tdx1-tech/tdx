@@ -1,7 +1,6 @@
-# The Dental Experience — https://REPLACE-WITH-YOUR-DOMAIN.com
-# Replace the domain below when the real one goes live (see also index.html and sitemap.xml).
+# The Dental Experience — https://www.thedentalexperience.org
 
 User-agent: *
 Allow: /
 
-Sitemap: https://REPLACE-WITH-YOUR-DOMAIN.com/sitemap.xml
+Sitemap: https://www.thedentalexperience.org/sitemap.xml

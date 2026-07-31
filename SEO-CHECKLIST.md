@@ -8,22 +8,38 @@ three queries. Work top to bottom.
 
 ---
 
-## Step 0 — Blocking: replace the domain placeholder
+## Step 0 — Domain: code is done, DNS connection is not
 
-The site has no live domain yet, so canonical/sitemap/OG URLs ship with a placeholder.
-Replace `REPLACE-WITH-YOUR-DOMAIN.com` in exactly three files:
+`www.thedentalexperience.org` is now wired in as the canonical host across
+`index.html`, `public/robots.txt` and `public/sitemap.xml` — that file-level work is
+finished.
 
-| File | Occurrences |
-| --- | --- |
-| `index.html` | 19 |
-| `public/robots.txt` | 2 |
-| `public/sitemap.xml` | 2 |
+But right now the domain is only **parked** at Namecheap: the "Redirect Domain" record
+in your screenshot forwards `thedentalexperience.org` → `www.thedentalexperience.org`
+as a plain HTTP redirect, and no A/CNAME record points either host at your Vercel
+project. Nothing resolves to the actual site yet. Since you're already hosting on
+Vercel, connect the two like this:
 
-**Do not deploy to production with the placeholder in place.** A canonical tag pointing
-at a host you don't own tells Google to index that host instead of yours.
+1. **In Vercel** — open the project → **Settings → Domains** → add both
+   `www.thedentalexperience.org` and `thedentalexperience.org`. Set `www` as the
+   **primary** domain (matches the canonical URL already in the code) and let Vercel
+   redirect the apex to it. Vercel will display the exact DNS records to add — use the
+   live values it shows you, not values from any other source, since Vercel's IPs can
+   change. As of now that's typically an `A` record on the apex (`@`) to `76.76.21.21`
+   and a `CNAME` on `www` to `cname.vercel-dns.com`, but confirm against what your
+   dashboard actually says.
+2. **In Namecheap** — go to Domain List → **Manage** → **Advanced DNS**.
+   - **Delete the existing "Redirect Domain" record first** — it will otherwise conflict
+     with the new DNS records and one of the two will silently lose.
+   - Add the `A` and `CNAME` records exactly as Vercel specified in step 1.
+3. Wait for propagation (Vercel's dashboard shows "Valid Configuration" once it sees the
+   records; usually minutes, can take a few hours). Vercel issues the SSL certificate
+   automatically once DNS resolves — no separate action needed.
+4. Confirm `https://www.thedentalexperience.org` loads the live site (not a Vercel
+   `.vercel.app` placeholder, not the old parking redirect) before moving to Step 1.
 
-Pick one hostname (either `example.com` or `www.example.com`, not both) and make the
-other 301-redirect to it. Mixing the two splits your ranking signals.
+Nothing below this line can produce results until that connection is live — Google
+can't index a domain that doesn't resolve to the site.
 
 ---
 
@@ -39,7 +55,7 @@ name in Peshawar may not find you at all even with a perfect website.
    - Address: `Office 312, 3rd Floor, Uhad Tower, Shaheen Town, Peshawar, Khyber Pakhtunkhwa, Pakistan`
    - Phone: `+92 316 5944327`
    - Hours: `Monday–Saturday, 11:00–21:00`
-   - Website: your live domain
+   - Website: `https://www.thedentalexperience.org`
    That exact-match consistency is the signal Google uses to link the listing to the site.
 3. Complete **verification** (postcard/phone/video). Unverified listings don't rank.
 4. Upload real clinic photos and add both doctors' services.
@@ -54,9 +70,10 @@ Expect a few days to a couple of weeks for verification plus initial ranking.
 
 Nothing ranks until Google has crawled it.
 
-1. Add the property in [Google Search Console](https://search.google.com/search-console),
-   verify via DNS or the Vercel integration.
-2. Submit `https://yourdomain.com/sitemap.xml`.
+1. Add the property in [Google Search Console](https://search.google.com/search-console)
+   for `www.thedentalexperience.org`, verify via DNS (add the TXT record Search Console
+   gives you at Namecheap) or via your hosting provider's integration if it offers one.
+2. Submit `https://www.thedentalexperience.org/sitemap.xml`.
 3. Use **URL Inspection → Request indexing** on the homepage to skip the queue.
 4. In URL Inspection, open **View crawled page** and confirm the doctors' names appear
    in the rendered HTML. This app renders client-side, so this check matters — if the
@@ -107,15 +124,16 @@ these creates an independent reference Google can tie back to the clinic:
 
 Done, no further action needed:
 
-- `index.html` — title, meta description, canonical, robots directives, Open Graph +
-  Twitter cards, geo hints for Peshawar.
+- `index.html` — title, meta description, canonical (`www.thedentalexperience.org`),
+  robots directives, Open Graph + Twitter cards, geo hints for Peshawar.
 - Static JSON-LD `@graph` with a `Dentist` node (address, hours, phone, services,
   service area) and a `Person` node per doctor (credentials, specialties, `worksFor`),
   cross-linked by `@id`. Static rather than JS-injected so crawlers get it without
-  executing JavaScript. Verified to parse with no dangling references.
+  executing JavaScript. Re-verified to parse with no dangling references after the
+  domain swap.
 - `public/og-image.jpg` — 1200×630 social preview.
-- `public/robots.txt` — crawlable, points at the sitemap.
-- `public/sitemap.xml` — one entry (single-URL app).
+- `public/robots.txt` — crawlable, points at `www.thedentalexperience.org/sitemap.xml`.
+- `public/sitemap.xml` — one entry (single-URL app), `<loc>` set to the live domain.
 
 ### Known limitation
 

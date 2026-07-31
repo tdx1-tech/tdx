@@ -8,11 +8,12 @@ import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowLeft, ArrowRight, Award, BookOpen, GraduationCap, CheckCircle,
   Phone, MessageCircle, Instagram, Maximize2, X, ChevronLeft, ChevronRight, Images,
-  Stethoscope, Sparkles
+  Stethoscope, Sparkles, Quote
 } from 'lucide-react';
-import { DOCTORS, SERVICES, CASE_STUDIES } from '../data';
+import { DOCTORS, SERVICES, CASE_STUDIES, PATIENT_REVIEWS } from '../data';
 import { Doctor, DoctorPhoto, DoctorType } from '../types';
 import ServiceFlipCard from './ServiceFlipCard';
+import PatientReviewGrid from './PatientReviewGrid';
 import CaseStudyCard from './CaseStudyCard';
 
 interface DoctorProfileViewProps {
@@ -70,6 +71,7 @@ export default function DoctorProfileView({
   const services = useMemo(() => SERVICES.filter((s) => s.doctor === doctor.id), [doctor.id]);
   const allCases = useMemo(() => CASE_STUDIES.filter((c) => c.doctor === doctor.id), [doctor.id]);
   const cases = allCases.slice(0, MAX_CASES_ON_PROFILE);
+  const reviews = useMemo(() => PATIENT_REVIEWS.filter((r) => r.doctor === doctor.id), [doctor.id]);
   const otherDoctor = DOCTORS.find((d) => d.id !== doctor.id);
   const photos = doctor.photos;
   const coursePhotos = doctor.coursePhotos ?? [];
@@ -468,6 +470,29 @@ export default function DoctorProfileView({
           </div>
         </div>
       </section>
+
+      {/* ================= PATIENT MESSAGES =================
+          Dropped entirely for a doctor with nothing on file, rather than shown
+          as an empty state - it reappears on its own once messages for them are
+          added to PATIENT_REVIEWS. */}
+      {reviews.length > 0 && (
+        <section
+          id="section-reviews"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 scroll-mt-28"
+        >
+          <SectionHeading
+            eyebrow="In Their Own Words"
+            title={`What Patients Say About Dr. ${firstName}`}
+            description={`Unprompted thank-you messages patients sent Dr. ${firstName} after treatment, shared with their names and profile pictures removed.`}
+            icon={Quote}
+          />
+
+          <PatientReviewGrid reviews={reviews} />
+          <p className="pt-2 text-[11px] text-gray-400 font-sans">
+            Spelling has been normalised for readability; no wording has been added.
+          </p>
+        </section>
+      )}
 
       {/* ================= CLOSING CTA ================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">

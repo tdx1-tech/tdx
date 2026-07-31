@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Replace REPLACE-WITH-YOUR-DOMAIN.com when the real domain goes live.
   The site is currently a single-URL client-rendered app, so there is one entry.
   If per-section routes (/about, /services, /cases, /contact) are added later,
   add one <url> block per route and update <lastmod>.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://REPLACE-WITH-YOUR-DOMAIN.com/</loc>
-    <lastmod>2026-07-25</lastmod>
+    <loc>https://www.thedentalexperience.org/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Doctor, Service, CaseStudy, GoogleReview, FAQItem } from './types';
+import { Doctor, Service, CaseStudy, PatientReview, FAQItem } from './types';
 
 
 // Case study images - Dr. Mashal
@@ -783,38 +783,107 @@ export const CASE_STUDIES: CaseStudy[] = [
 
 export const CLINIC_GOOGLE_REVIEW_URL = 'https://maps.google.com/?q=The+Dental+Experience+Peshawar';
 
-export const GOOGLE_REVIEWS: GoogleReview[] = [
+/**
+ * Real messages patients sent the doctors on Instagram, transcribed from the
+ * clinic's screenshots. Senders are kept anonymous because their names and
+ * profile pictures were redacted in every screenshot supplied - do not add
+ * names or handles here without that patient's explicit permission.
+ *
+ * Dr. Faizan has no entries yet: none were supplied, and inventing them would
+ * be a fabricated testimonial for a named clinician. His section renders an
+ * honest empty state until real messages are added.
+ */
+export const PATIENT_REVIEWS: PatientReview[] = [
   {
-    id: 'rev-1',
-    author: 'Asad Khan',
-    rating: 5,
-    timeAgo: '1 week ago',
-    text: 'Dr. Mashal Zeb Jan is literally an artist. I got 8 porcelain veneers done, and they completely transformed my confidence. The process was explained step-by-step. The clinic inside looks like a 7-star hotel, very comfortable and premium. Highly recommended!',
-    avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100'
+    id: 'rev-mashal-1',
+    doctor: 'mashal',
+    source: 'instagram',
+    text: 'Thank you Dr. Mashal for all the time and effort you have spent in making my teeth perfect. I am very grateful. Stay Blessed!!!'
   },
   {
-    id: 'rev-2',
-    author: 'Sania Shah',
-    rating: 5,
-    timeAgo: '3 weeks ago',
-    text: 'I was extremely self-conscious about my crooked teeth, but Dr. Faizan Ul Hassan was wonderful. He treated me with aesthetic ceramic braces, and the progress was incredibly fast. He has the best orthodontic skills in Peshawar. Thank you so much!',
-    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100'
+    id: 'rev-mashal-2',
+    doctor: 'mashal',
+    source: 'instagram',
+    text: 'Thank you Mashal for the awesome services and being so nice and cooperative throughout ❤️'
   },
   {
-    id: 'rev-3',
-    author: 'Dr. Bilal Yousafzai',
-    rating: 5,
-    timeAgo: '1 month ago',
-    text: 'As a medical professional myself, I am very critical of sterile environments and technology. The Dental Experience is exceptional. They have state-of-the-art tools, extreme hygiene standards, and both doctors are top of their fields. Excellent service in Peshawar.',
-    avatarUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100'
+    id: 'rev-mashal-3',
+    doctor: 'mashal',
+    source: 'instagram',
+    treatment: 'First appointment',
+    text: 'Dr. Mashal is the most amazing dentist in Peshawar. I had my first ever appointment and it was quite nice. I would say she is the reason behind my smile, at least for today ❤️ (This is not a paid promotion.)'
   },
   {
-    id: 'rev-4',
-    author: 'Palwasha Afridi',
-    rating: 5,
-    timeAgo: '2 months ago',
-    text: 'Had an amazing smile design session with Dr. Mashal. The 3D preview she showed me was exactly what I got! The team is incredibly warm, professional, and the clinic in Shaheen Town is very easy to find with great parking.',
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100'
+    id: 'rev-mashal-4',
+    doctor: 'mashal',
+    source: 'instagram',
+    treatment: 'Scaling & Polishing',
+    translated: true,
+    text: 'Thank you Mashal, it was such a pleasant experience with you. Believe me, I was too scared — but I did not feel any pain at all. So happy to have clean teeth, thanks to you ❤️'
+  },
+  {
+    id: 'rev-mashal-5',
+    doctor: 'mashal',
+    source: 'instagram',
+    text: 'Hi — came here to send you a note of thanks. Super satisfied with my treatment. You have gentle hands and are so good at what you do. Need more dentists like you. Thanks a lot. P.S. My son says the doctor was so nice, and my daughter has been asking for glitter wala nail polish ever since she saw your nails. 😀'
+  },
+  {
+    id: 'rev-mashal-6',
+    doctor: 'mashal',
+    source: 'instagram',
+    text: 'My mother is so satisfied and happy from your work. She said it was a painless treatment.'
+  },
+  {
+    id: 'rev-mashal-7',
+    doctor: 'mashal',
+    source: 'instagram',
+    treatment: 'Scaling',
+    text: 'Hey Mashal, how are you. Got my scaling done from you today and I have to say you are a God sent. I had the best experience and I am just going to recommend you to everyone from now on. Honestly, you made me feel so comfortable and that is what made everything so easy and smooth for me. Thank you so much ❤️'
+  },
+  {
+    id: 'rev-mashal-8',
+    doctor: 'mashal',
+    source: 'instagram',
+    treatment: 'Root Canal Treatment',
+    text: 'Thank you Dr Mashal! It was a very pleasant experience with you. I was really scared of any dental procedure and anesthesia, but you have magic in your hands. The whole procedure was so smooth and pain free. You are very professional 👏 Stay Blessed!'
+  },
+  {
+    id: 'rev-mashal-9',
+    doctor: 'mashal',
+    source: 'instagram',
+    treatment: 'Restoration',
+    text: 'I couldn\'t say proper thanks at the end, maam. Thanks maam for doing such a meticulous job. After the restoration the look is so much better relatively. Stay blessed maam.'
+  },
+  {
+    id: 'rev-mashal-10',
+    doctor: 'mashal',
+    source: 'instagram',
+    treatment: 'Anterior Restoration',
+    text: 'Salam, hope you are doing well. Thank you Dr Mashal — for enhancing my smile and all the efforts, especially the restoration of the discoloured root-canal-treated tooth. I am in love with the shape of my anteriors. I felt really comfortable during treatment and was able to tell you my concerns. You listened to me and tried your best. Thank you so much ❤️'
+  },
+  {
+    id: 'rev-mashal-11',
+    doctor: 'mashal',
+    source: 'instagram',
+    text: 'Hey Dr Mashal, thank you so much for such a comfy dental session 😍❤️'
+  },
+  {
+    id: 'rev-mashal-12',
+    doctor: 'mashal',
+    source: 'instagram',
+    text: 'Thank you so much Mashal, it was such a nice painless experience ❤️'
+  },
+  {
+    id: 'rev-mashal-13',
+    doctor: 'mashal',
+    source: 'instagram',
+    text: 'Thank you so much for such gentle and painless treatment, Alhamdulillah. You are an amazing dentist. I was really nervous but you made it so comfortable. Thank you for taking such great care of me, I am so grateful for your expertise ❤️'
+  },
+  {
+    id: 'rev-mashal-14',
+    doctor: 'mashal',
+    source: 'instagram',
+    text: 'Thank you for your excellent care of my 🦷 :)'
   }
 ];
 

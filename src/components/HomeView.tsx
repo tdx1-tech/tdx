@@ -25,7 +25,8 @@ import tdxWallLogo from '@/assets/images/Gallery/tdx-wall-logo.webp';
 import clinicInterior from '@/assets/images/Gallery/clinic-interior.webp';
 import mashal from '@/assets/images/mashal.webp';
 
-import { SERVICES, DOCTORS, CASE_STUDIES, GOOGLE_REVIEWS, FAQS, CLINIC_GOOGLE_REVIEW_URL } from '../data';
+import { SERVICES, DOCTORS, CASE_STUDIES, PATIENT_REVIEWS, FAQS, CLINIC_GOOGLE_REVIEW_URL } from '../data';
+import PatientReviewGrid from './PatientReviewGrid';
 import { Doctor, Service } from '../types';
 import { splitCompositeImage } from '../utils/splitComposite';
 
@@ -44,6 +45,28 @@ const IconMap: Record<string, React.ComponentType<any>> = {
   EyeOff: EyeOff,
   Smile: Smile,
 };
+
+/** Masonry rows only - the phone carousel swipes through the full set. */
+const HOME_REVIEW_DESKTOP_COUNT = 6;
+
+/**
+ * Every patient message, alternating between the two doctors so neither
+ * dominates. Dr. Faizan has none on file yet, so this currently resolves to
+ * Dr. Mashal's - it starts mixing on its own as soon as entries for him are
+ * added to PATIENT_REVIEWS.
+ */
+const homeReviews = (() => {
+  const byDoctor = [
+    PATIENT_REVIEWS.filter((r) => r.doctor === 'mashal'),
+    PATIENT_REVIEWS.filter((r) => r.doctor === 'faizan')
+  ];
+  const longest = Math.max(...byDoctor.map((list) => list.length));
+  const mixed = [];
+  for (let i = 0; i < longest; i++) {
+    mixed.push(...byDoctor.map((list) => list[i]).filter(Boolean));
+  }
+  return mixed;
+})();
 
 interface HomeCaseSliderCardProps {
   title: string;
@@ -850,62 +873,22 @@ export default function HomeView({ onOpenBooking, setActiveTab, onViewDoctorProf
           transition={{ duration: 0.5 }}
           className="text-center max-w-2xl mx-auto mb-16 space-y-3"
         >
-          <span className="font-mono text-xs uppercase tracking-widest text-brand-gold font-semibold">Verified Google Reviews</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-brand-gold font-semibold">In Their Own Words</span>
           <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-brand-charcoal">
             What Our Patients Say
           </h2>
           <div className="w-16 h-0.5 bg-brand-champagne mx-auto mt-4" />
           <p className="text-gray-500 text-sm font-sans">
-            We hold ourselves to a flawless standard of dental hygiene and customer concierge. Read honest feedback from our real patients.
+            Unprompted thank-you messages our patients sent the doctors after treatment. Shared with names and profile pictures removed.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {GOOGLE_REVIEWS.map((rev, index) => (
-            <motion.div
-              key={rev.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="bg-white p-6 rounded-2xl border border-brand-champagne shadow-sm hover:border-brand-mint hover:shadow-md transition-all flex flex-col justify-between space-y-4"
-            >
-              <div className="space-y-3">
-                {/* Stars */}
-                <div className="flex items-center space-x-0.5 text-brand-gold">
-                  {Array.from({ length: rev.rating }).map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
-                  ))}
-                </div>
+        <PatientReviewGrid reviews={homeReviews} desktopLimit={HOME_REVIEW_DESKTOP_COUNT} />
 
-                <p className="text-xs text-gray-600 font-sans italic leading-relaxed line-clamp-6">
-                  "{rev.text}"
-                </p>
-              </div>
-
-              {/* Author Row */}
-              <div className="flex items-center space-x-3 pt-4 border-t border-brand-champagne/60">
-                <div className="w-9 h-9 rounded-full overflow-hidden bg-brand-sand">
-                  <img
-                    src={rev.avatarUrl}
-                    alt={rev.author}
-                    className="w-full h-full object-cover object-top scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div>
-                  <h4 className="text-xs font-semibold text-brand-charcoal">{rev.author}</h4>
-                  <div className="flex items-center space-x-1.5 text-[9px] text-gray-400 font-mono">
-                    <span>{rev.timeAgo}</span>
-                    <span>•</span>
-                    <span className="text-brand-mint font-bold">Google Maps</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <p className="mt-8 text-center text-[11px] text-gray-400 font-sans">
+          Every message above is a real, unedited patient message held on file by the clinic. Spelling has been
+          normalised for readability; no wording has been added.
+        </p>
 
         <div className="mt-8 text-center">
           <a

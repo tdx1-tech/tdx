@@ -106,50 +106,7 @@ export default function Footer({ setActiveTab, onOpenBooking }: FooterProps) {
           {/* Column 3: Follow Us + Contact (4 cols) */}
           <div className="md:col-span-4 lg:col-span-4 space-y-6">
             
-            {/* Follow Us Section */}
-            <div className="space-y-3">
-              <h4 className="font-serif text-xs font-bold text-[#0D9C89] tracking-[0.2em] uppercase">
-                FOLLOW US
-              </h4>
-              <div className="flex items-center space-x-3">
-                <a 
-                  href="https://facebook.com" 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0D9C89] text-white flex items-center justify-center transition-all hover:scale-110"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-4 h-4" />
-                </a>
-                <a 
-                  href="https://instagram.com" 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0D9C89] text-white flex items-center justify-center transition-all hover:scale-110"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-4 h-4" />
-                </a>
-                <a 
-                  href="https://wa.me/923165944327" 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0D9C89] text-white flex items-center justify-center transition-all hover:scale-110"
-                  aria-label="WhatsApp"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                </a>
-                <a 
-                  href="https://youtube.com" 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#0D9C89] text-white flex items-center justify-center transition-all hover:scale-110"
-                  aria-label="YouTube"
-                >
-                  <Youtube className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
+            
 
             {/* Contact Section */}
             <div className="space-y-3 pt-2">

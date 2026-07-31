@@ -86,13 +86,26 @@ export interface CaseStudy {
   details: string[];
 }
 
-export interface GoogleReview {
+/**
+ * An unsolicited thank-you message a patient sent the doctor on social media.
+ *
+ * These are not star-rated directory reviews and they carry no patient
+ * photography: the clinic holds them only as screenshots with the sender's
+ * name and picture redacted. The card layout is built around that - no avatar,
+ * no rating, no fabricated timestamp.
+ */
+export interface PatientReview {
   id: string;
-  author: string;
-  rating: number;
-  timeAgo: string;
+  doctor: DoctorType;
+  /** The patient's own words. Spelling normalised for legibility; wording untouched. */
   text: string;
-  avatarUrl: string;
+  source: 'instagram' | 'facebook' | 'whatsapp';
+  /** Only set where the sender identified themselves and is not a private patient. */
+  attribution?: string;
+  /** Treatment the message refers to, where the patient named it. */
+  treatment?: string;
+  /** Set when the quote is translated from Pashto/Urdu, so the card can say so. */
+  translated?: boolean;
 }
 
 export interface FAQItem {
