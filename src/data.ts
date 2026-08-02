@@ -13,6 +13,9 @@ import teethWhitening from '@/assets/images/Cases/dr-mashal-cases/teeth-whitenin
 import teethWhiteningBleaching from '@/assets/images/Cases/dr-mashal-cases/teeth-whitening-bleaching.jpeg';
 import toothRestoration2 from '@/assets/images/Cases/dr-mashal-cases/tooth-restoration-2.jpeg';
 import anteriorFilling from '@/assets/images/Cases/dr-mashal-cases/anterior-filling.jpeg';
+import rootCanalBefore from '@/assets/images/Cases/dr-mashal-cases/root-canal-treatment-before.jpeg';
+import rootCanalAfter from '@/assets/images/Cases/dr-mashal-cases/root-canal-treatment-after.jpeg';
+import rootCanalFull from '@/assets/images/Cases/dr-mashal-cases/root-canal-treatment-full.jpeg';
 
 // Case study images - Dr. Faizan.
 // Each case ships as three files: the before and after halves, already split out
@@ -460,6 +463,28 @@ export const SERVICES: Service[] = [
       'Precise, durable bonding & final aesthetic calibration'
     ],
     iconName: 'Sparkles'
+  },
+  {
+    id: 'composite-veneers',
+    title: 'Composite Veneers',
+    doctor: 'mashal',
+    shortDescription: 'Hand-sculpted resin veneers that reshape, brighten, and refine your smile in a single visit.',
+    longDescription: 'Composite veneers offer an artful, more conservative alternative to porcelain, freehand-sculpted chairside by Dr. Mashal using premium layered resin. Ideal for correcting minor chips, gaps, and shape irregularities, they deliver an immediate, natural-looking transformation with minimal tooth preparation, all completed in one comfortable appointment.',
+    duration: '60-120 minutes (single visit)',
+    priceEstimate: 'Accessible premium styling',
+    benefits: [
+      'Immediate results completed in a single visit',
+      'Minimal to no removal of natural tooth structure',
+      'Easily repairable and reversible if needed',
+      'Natural, shade-matched aesthetic finish'
+    ],
+    steps: [
+      'Smile design consultation and shade selection',
+      'Minimal, conservative enamel conditioning',
+      'Freehand chairside sculpting of layered composite resin',
+      'Contouring, bite adjustment, and final high-gloss polish'
+    ],
+    iconName: 'Sparkles'
   }
 ];
 
@@ -778,10 +803,28 @@ export const CASE_STUDIES: CaseStudy[] = [
       'Anatomically sculpted occlusal grooves and cusps',
       'Prevents future decay and root canal necessity'
     ]
+  },
+  {
+    id: 'case-root-canal-mashal',
+    title: 'Dr. Mashal: Root Canal Therapy — Infected Molar Saved',
+    doctor: 'mashal',
+    category: 'Endodontics / Root Canal Treatment',
+    description: 'Diagnostic x-ray shows deep infection reaching the pulp of a molar. Dr. Mashal completed full root canal therapy, cleaning and sealing the canal system to save the natural tooth from extraction.',
+    beforeImage: rootCanalBefore,
+    afterImage: rootCanalAfter,
+    fullImage: rootCanalFull,
+    isSplitComposite: true,
+    aspectRatio: 700 / 900,
+    details: [
+      'Diagnostic x-ray confirmed deep pulp infection',
+      'Complete cleaning and disinfection of the root canal system',
+      'Precise obturation sealing the canal to prevent reinfection',
+      'Natural tooth preserved instead of extraction'
+    ]
   }
 ];
 
-export const CLINIC_GOOGLE_REVIEW_URL = 'https://maps.google.com/?q=The+Dental+Experience+Peshawar';
+export const CLINIC_GOOGLE_REVIEW_URL = 'https://share.google/uU0jer5joI4d4xYVz';
 
 /**
  * Real messages patients sent the doctors on Instagram, transcribed from the

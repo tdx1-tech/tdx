@@ -470,7 +470,7 @@ export default function HomeView({ onOpenBooking, setActiveTab, onViewDoctorProf
           </h2>
           <div className="w-16 h-0.5 bg-[#0D9C89]/30 mx-auto mt-3" />
           <p className="text-gray-500 text-base leading-relaxed font-sans max-w-3xl mx-auto pt-1">
-            We don't practice general dentistry. Dr. Faizan Ul Hassan directs orthodontic alignment and surgical protocols, while Dr. Mashal Zeb Jan leads aesthetic & microscopic restorations.
+            We don't practice general dentistry. Dr. Faizan Ul Hassan directs orthodontic alignment and surgical protocols, while Dr. Mashal Zeb Jan, Endodontist, leads aesthetic & microscopic restorations.
           </p>
         </motion.div>
 
