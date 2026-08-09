@@ -824,7 +824,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   }
 ];
 
-export const CLINIC_GOOGLE_REVIEW_URL = 'https://share.google/uU0jer5joI4d4xYVz';
+export const CLINIC_GOOGLE_REVIEW_URL = 'https://g.page/r/CfKl7JPhUKEiEBM/review';
 
 /**
  * Real messages patients sent the doctors on Instagram, transcribed from the
