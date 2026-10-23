@@ -16,6 +16,14 @@ interface BookingWizardProps {
   preSelectedServiceId?: string | null;
 }
 
+const getHalfHourSlots = (startHour: number, endHour: number): string[] =>
+  Array.from({ length: (endHour - startHour) * 2 }, (_, index) => {
+    const hour = startHour + Math.floor(index / 2);
+    const minute = index % 2 === 0 ? '00' : '30';
+    const period = hour < 12 ? 'AM' : 'PM';
+    return `${String(hour % 12 || 12).padStart(2, '0')}:${minute} ${period}`;
+  });
+
 export default function BookingWizard({
   isOpen,
   onClose,
@@ -67,19 +75,24 @@ export default function BookingWizard({
       if (nextDate.getDay() !== 0) { // skip Sunday
         const dayString = nextDate.toLocaleDateString('en-US', { weekday: 'short' });
         const dateString = nextDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short' });
-        const isoString = nextDate.toISOString().split('T')[0];
+        const isoString = `${nextDate.getFullYear()}-${String(nextDate.getMonth() + 1).padStart(2, '0')}-${String(nextDate.getDate()).padStart(2, '0')}`;
         dates.push({ dayString, dateString, isoString });
       }
     }
     return dates;
   };
 
-  const timeslots = [
-    '11:30 AM', '12:30 PM', '01:30 PM', '03:00 PM', '04:00 PM', '05:00 PM', '06:30 PM', '07:30 PM'
-  ];
+  // Appointment start times every 30 minutes within each doctor's working hours.
+  const isSaturday = selectedDate ? new Date(`${selectedDate}T12:00:00`).getDay() === 6 : false;
+  const timeslots = selectedDoctor?.id === 'mashal'
+    ? getHalfHourSlots(isSaturday ? 13 : 14, isSaturday ? 16 : 18)
+    : selectedDoctor?.id === 'faizan'
+      ? getHalfHourSlots(isSaturday ? 16 : 18, 21)
+      : [];
 
   const handleDoctorSelect = (doctor: Doctor) => {
     setSelectedDoctor(doctor);
+    setSelectedTime('');
     // If a service was previously selected and doesn't belong to this doctor, clear it
     if (selectedService && selectedService.doctor !== doctor.id) {
       setSelectedService(null);
@@ -93,14 +106,14 @@ export default function BookingWizard({
   };
 
   const handleDateTimeConfirm = () => {
-    if (selectedDate && selectedTime) {
+    if (selectedDate && timeslots.includes(selectedTime)) {
       setStep(4);
     }
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedDoctor || !selectedService || !selectedDate || !selectedTime) return;
+    if (!selectedDoctor || !selectedService || !selectedDate || !timeslots.includes(selectedTime)) return;
 
     const newAppointment: Appointment = {
       id: 'apt_' + Date.now(),
@@ -411,7 +424,10 @@ export default function BookingWizard({
                         <button
                           key={dt.isoString}
                           type="button"
-                          onClick={() => setSelectedDate(dt.isoString)}
+                          onClick={() => {
+                            setSelectedDate(dt.isoString);
+                            setSelectedTime('');
+                          }}
                           className={`flex flex-col items-center justify-center min-w-16 p-3 rounded-lg border transition-all text-center ${
                             isSelected
                               ? 'bg-brand-emerald text-white border-brand-emerald shadow-sm'
@@ -474,10 +490,10 @@ export default function BookingWizard({
                     Back
                   </button>
                   <button
-                    disabled={!selectedDate || !selectedTime}
+                    disabled={!selectedDate || !timeslots.includes(selectedTime)}
                     onClick={handleDateTimeConfirm}
                     className={`px-6 py-2.5 rounded-lg font-medium text-xs tracking-wider uppercase transition-all flex items-center space-x-1 ${
-                      selectedDate && selectedTime
+                      selectedDate && timeslots.includes(selectedTime)
                         ? 'bg-brand-emerald text-white hover:bg-brand-emerald-dark cursor-pointer'
                         : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                     }`}

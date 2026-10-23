@@ -378,7 +378,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: 'anterior-fillings',
-    title: 'Anterior Fillings',
+    title: 'Anterior Fillings / Composite Bonding',
     doctor: 'mashal',
     shortDescription: 'Tooth-colored composite restorations that repair decay, chips, and fractures on front teeth invisibly.',
     longDescription: 'Front teeth demand both strength and beauty. Dr. Mashal restores decayed, chipped, or fractured anterior teeth using layered nano-composite resin, carefully shade-matched and sculpted to mirror the natural translucency and texture of your own enamel, so the repair disappears into your smile.',
